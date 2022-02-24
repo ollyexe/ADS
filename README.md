@@ -170,11 +170,11 @@ Si misurino i tempi di risposta variando il valore di `k` e si produca una breve
 
 Realizzare una struttura dati chiamata `skip_list`. La `skip_list` è un tipo di lista concatenata che memorizza una *lista ordinata* di elementi.
 
-Al contrario delle liste concatenate, la `skip_list` è una struttura dati probabilistica che permette di realizzare l'operazione di ricerca con complessità `O(log n)` in termini di tempo. Anche le operazioni di inserimento e cancellazione di elementi possono essere realizzate in tempo `O(log n)`. Per questa ragione, la `skip_list` è una delle strutture dati che vengono spesso utilizzate per indicizzare dati.
+Al contrario delle liste concatenate classiche, la `skip_list` è una struttura dati probabilistica che permette di realizzare l'operazione di ricerca con complessità `O(log n)` in termini di tempo. Anche le operazioni di inserimento e cancellazione di elementi possono essere realizzate in tempo `O(log n)`. Per questa ragione, la `skip_list` è una delle strutture dati che vengono spesso utilizzate per indicizzare dati.
 
-Ogni nodo di una lista concatenata contiene un puntatore all'elemento successivo nella lista. Serve quindi scorrere la lista sequenzialmente per trovare un elemento nella lista. La `skip_list` velocizza l'operazione di ricerca creando delle "vie espresse" che permettono saltare parte della lista durante l'operazione di ricerca. Questo è possibile perché ogni nodo della `skip_list` contiene non solo un singolo puntatore al prossimo elemento della lista, ma un array di puntatori che ci permettono di saltare a diversi punti seguenti nella lista. Un esempio di questo schema è rappresentato nella figura in seguito.
+Ogni nodo di una lista concatenata contiene un puntatore all'elemento successivo nella lista. Dobbiamo quindi scorrere la lista sequenzialmente per trovare un elemento nella lista. La `skip_list` velocizza l'operazione di ricerca creando delle "vie espresse" che permettono saltare parte della lista durante l'operazione di ricerca. Questo è possibile perché ogni nodo della `skip_list` contiene non solo un singolo puntatore al prossimo elemento della lista, ma un array di puntatori che ci permettono di saltare a diversi punti seguenti nella lista. Un esempio di questo schema è rappresentato nella figura in seguito.
 
-![Esempio di una `skip_list`. Dal nodo che contiene il numero 6 si può saltare direttamente ai nodi 9 e 25, senza scorrere gli altri nodi.](skiplist.png)
+![Esempio di una `skip_list`. Dal nodo che contiene il numero 6 si può saltare direttamente ai nodi 9 e 25, senza visitare gli altri nodi.](skiplist.png)
 
 Si implementi quindi una libreria che realizza la struttura dati `skip_list`. L'implementazione deve essere generica per quanto riguarda il tipo dei dati memorizzati nella struttura. Come suggerimento, una possibile definizione del tipo di dati `skip_list` è la seguente:
 
@@ -205,7 +205,7 @@ Dove:
 
 - `unsigned int max_level`: determina il massimo attuale tra i vari `size`.
 
-La libreria deve includere le due operazioni elencate di sotto, che sono riportate in pseudo-codice. Tradurre il pseudo-codice in C.
+La libreria deve includere le due operazioni elencate sotto, che sono riportate in pseudo-codice. Tradurre il pseudo-codice in C.
 
 ##### insertSkipList: Inserisce I nella skiplist ``list``
 ```
@@ -223,10 +223,10 @@ insertSkipList(list, I)
               x->next[k] = new
             }
         else
-            x = x->next[k];
+            x = x->next[k]
 ```
 
-La funzione ``randomLevel()`` determina il numero di puntatori da includere nel nuovo nodo. Deve essere realizzata conforme il seguente algoritmo. Spiegare il vantaggio di questo algoritmo nella relazione da consegnare con l'esercizio:
+La funzione ``randomLevel()`` determina il numero di puntatori da includere nel nuovo nodo e deve essere realizzata conforme il seguente algoritmo. Spiegare il vantaggio di questo algoritmo nella relazione da consegnare con l'esercizio:
 ```
 randomLevel()
     lvl := 1
@@ -270,13 +270,13 @@ All'indirizzo
 ```
 https://datacloud.di.unito.it/index.php/s/XXXXXXXXXXXXXXXXXX
 ```
-potete trovare dei dizionari (e.g., `dict_english.txt`) e un file da correggere (`correctme.txt`).
+potete trovare un dizionario (`dict_english.txt`) e un file da correggere (`correctme.txt`).
 
 Il dizionario contiene un elenco di parole. Le parole sono scritte di seguito, ciascuna su una riga.
 
 Il file `correctme.txt` contiene un testo da correggere. Il testo presenta alcuni errori di battitura.
 
-Si implementi una applicazione che usa la struttura dati ``skip_list`` per determinare di forma efficiente la lista di parole in ``correctme.txt`` non presente nel dizionario dato come input al programma.
+Si implementi una applicazione che usa la struttura dati ``skip_list`` per determinare di forma efficiente la lista di parole nel testo da correggere non presente nel dizionario dato come input al programma.
 
 Si sperimenti il funzionamento dell'applicazione considerando diversi valori per la constante ``MAX_HEIGHT``, riportando in una breve relazione (circa una pagina) i risultati degli esperimenti.
 
@@ -284,14 +284,14 @@ Si sperimenti il funzionamento dell'applicazione considerando diversi valori per
 
 ### Condizioni della consegna:
 
--– Creare una sottocartella chiamata ``ex2`` all'interno del repository.
+-- Creare una sottocartella chiamata ``ex2`` all'interno del repository.
 
 -- La consegna deve obbligatoriamente contenere un `Makefile`. Il `Makefile` deve produrre all'interno di ``ex2/build`` un file eseguibile chiamato ``main_ex2``.
 
 -- ``main_ex2`` deve ricevere come parametri il path del dizionario da usare come riferimento e il file da correggere, necessariamente in quest'ordine. Il risultato va stampato a schermo, con le parole ordinate come nel file da correggere. Per esempio:
 
 ```
-$ ./main_ex2 ../data/dict/en_sorted ../data/correctme.txt
+$ ./main_ex2 /tmp/data/dict_english.txt /tmp/data/correctme.txt
 list-like
 subsequences
 subsequence
