@@ -84,7 +84,7 @@ accedere tramite browser aprendo l'URL:
 Una volta effettuato il login, è possibile utilizzare l'interfaccia web per
 creare una copia personale del repository su cui lavorerete. Un membro per ogni
 gruppo acceda all'url:
-  [https://gitlab2.educ.di.unito.it/pozzato/laboratorio-algoritmi-2020-2021](https://gitlab2.educ.di.unito.it/pozzato/laboratorio-algoritmi-2020-2021)
+  [https://gitlab2.educ.di.unito.it/drago/laboratorio-algoritmi-2021-2022](https://gitlab2.educ.di.unito.it/drago/laboratorio-algoritmi-2021-2022)
 e clicchi sull'icona "Fork repository".
 
 Di default, l'interfaccia web proporrà di impostare i permessi del repository
@@ -96,7 +96,7 @@ perché qualcuno ne ha copiato il contenuto.
 Aggiungete ora i membri del gruppo *e i docenti di laboratorio* al gruppo di
 sviluppo del progetto con ruolo "developer" (trovate l'opzione seguendo i menù
 Settings -> Members a partire dalla pagina del vostro repository). I nickname
-dei docenti di laboratorio sono "pozzato", "magro" e "drago".
+dei docenti di laboratorio sono "pozzato", "magro", "drago" e "micalizi".
 
 L'avere a disposizione una copia del laboratorio non è ancora sufficiente per
 poter iniziare a lavorare: è infatti necessario creare una copia locale alla
@@ -119,7 +119,7 @@ repository proposto dai docenti: (nel vostro caso dovrete
 sostituire l'URL con quello che vi siete annotati precedentemente):
 
 ```
- git clone https://magro@gitlab2.educ.di.unito.it/pozzato/laboratorio-algoritmi-2020-2021
+ git clone https://magro@gitlab2.educ.di.unito.it/drago/laboratorio-algoritmi-2021-2022
 ```
 
 ## Comandi di base per lavorare
@@ -141,7 +141,7 @@ aggiornamento. Segue un elenco dei comandi principali che dovrete utilizzare:
   necessario aggiungere esplicitamente tutti i file che sono stati modificati o
   creati.
 
-- `rm`: rimuove uno o più file dalla copia locale e dal repository al prossimo commit. 
+- `rm`: rimuove uno o più file dalla copia locale e dal repository al prossimo commit.
 È necessario aggiungere esplicitamente tutti i file che sono stati cancellati.
 
 - `commit`: salva lo stato del progetto.
