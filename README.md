@@ -1,92 +1,399 @@
-# laboratorio-algoritmi-2021-2022
+# Laboratorio per il corso di Algoritmi e Strutture Dati: regole d'esame, indicazioni generali e suggerimenti, consegne per gli esercizi
+
+# Regole d'esame
+
+---
+
+**Importante**: gli studenti che hanno nel piano di studi l'insegnamento di Algoritmi con un numero di CFU **differente da 9** sono pregati di contattare il docente al più presto, al fine di concordare un programma d'esame commisurato ai CFU.
+
+---
+
+Il progetto di laboratorio può essere svolto individualmente o in gruppo (al più 3 persone). **I membri di uno stesso gruppo devono appartenere tutti allo stesso turno di laboratorio**.
+
+ll progetto di laboratorio va consegnato mediante Git (vedi sotto) entro e non oltre la data della prova scritta che si intende sostenere. E' vietato sostenere la prova scritta in caso di mancata consegna del progetto di laboratorio. In caso di superamento della prova scritta, la prova orale (discussione del laboratorio) va sostenuta, previa prenotazione mediante apposita procedura che sarà messa a disposizione sulla pagina i-learn del corso, **nella medesima sessione della prova scritta superata** (si ricorda che le sessioni sono giugno-luglio 2022, settembre 2022, dicembre 2022 e gennaio-febbraio 2023).
+
+Si noti che, per la sola sessione di giugno-luglio saranno previsti due appelli e, pertanto, esisteranno due possibilità per la discussione del laboratorio (primo o secondo appello della sessione). Nelle altre sessioni, l'appello è unico. Ad esempio, se la studentessa/lo studente X supera la prova scritta a dicembre 2022, deve necessariamente sostenere la discussione di laboratorio con la prova orale di dicembre 2022 (non sarà possibile discutere a gennaio-febbraio 2023).
+
+Esempio:
+
+- la studentessa/lo studente X sostiene la prova scritta nel primo appello di giugno;
+- la studentessa/lo studente X deve assicurarsi che il progetto su GitLab, alla data della prova scritta che intende sostenere (in questo esempio, quella del primo appello di giugno), sia aggiornato alla versione che vuole presentare al docente di laboratorio;
+- se la studentessa/lo studente X supera la prova scritta nel primo appello di giugno, deve (pena la perdita del voto ottenuto nella prova scritta) iscriversi a uno degli appelli orali di giugno o luglio, prenotarsi su i-learn in uno degli slot messi a disposizione dal docente del turno di appartenenza e sostenere l'orale nello slot temporale prenotato.
+
+Le regole riportate sopra si applicano alla singola studentessa/al singolo studente. Per poter accedere alla discussione di laboratori è in ogni caso necessaria l'iscrizione alla prova orale corrispondente su myunito.
+
+Studentesse/studenti diversi, appartenenti allo stesso gruppo, possono sostenere la prova **scritta** nello stesso appello o in appelli diversi. Se studentesse/studenti diversi, appartenenti allo stesso gruppo, superano la prova scritta nello stesso appello, **devono** sostenere l' **orale** nello stesso appello orale. Se studentesse/studenti diversi, appartenenti allo stesso gruppo, superano la prova scritta in appelli diversi, **possono** sostenere l'**orale** in appelli diversi.
+
+Ad esempio, si consideri un gruppo di laboratorio costituito dalle studentesse/dagli studenti X, Y e Z, e si supponga che i soli X e Y sostengano la prova scritta nel primo appello di giugno, X con successo, mentre Y con esito insufficiente. Devono essere rispettate le seguenti condizioni:
+
+- alla data della prova scritta del primo appello di giugno, il progetto di laboratorio del gruppo deve essere aggiornato alla versione che si intende presentare;
+- il solo studente X deve sostenere la prova orale nella sessione giugno-luglio,  procedendo come indicato nell'esempio riportato sopra, mentre Y e Z sosterranno la discussione quando avranno superato la prova scritta.
+- Supponiamo che Y e Z superino la prova scritta nell'appello di gennaio: essi dovranno sostenere la prova orale nella sessione di gennaio-febbraio.
+- Gli studenti Y e Z dovranno, di norma, discutere la stessa versione del progetto di laboratorio che ha discusso lo studente X; i.e., eventuali modifiche al laboratorio successive alla discussione di X dovranno essere debitamente documentate (i.e., il log delle modifiche dovrà comparire su GitLab) e motivate.
+
+**Validità del progetto di laboratorio** : le specifiche per il progetto di laboratorio descritte in questo documento resteranno valide fino all'ultimo appello della sessione gennaio-febbraio relativa al corrente anno accademico **(vale a dire, quella di gennaio-febbraio 2023)** e non oltre!. Gli appelli delle sessioni successive a questa dovranno essere sostenuti sulla base delle specifiche che verranno descritte nella prossima edizione del laboratorio di algoritmi.
 
 
+# Indicazioni generali e suggerimenti
 
-## Getting started
+## Uso di Git
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Durante la scrittura del codice è richiesto di usare in modo appropriato il sistema di versioning Git. Questa richiesta implica quanto segue:
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+- il progetto di laboratorio va inizializzato "clonando" il repository del laboratorio come descritto nel file Git.md;
+- come è prassi nei moderni ambienti di sviluppo, è richiesto di effettuare commit frequenti. L'ideale è un commit per ogni blocco di lavoro terminato (es. creazione e test di una nuova funzione, soluzione di un baco, creazione di una nuova interfaccia, ...);
+- ogni membro del gruppo dovrebbe effettuare il commit delle modifiche che lo hanno visto come principale sviluppatore;
+- al termine del lavoro si dovrà consegnare l'intero repository.
 
-## Add your files
+Il file Git.md contiene un esempio di come usare Git per lo sviluppo degli esercizi proposti per questo laboratorio.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+---
+
+**Nota importante**: Su git dovrà essere caricato solamente il codice sorgente, in particolare nessun file dati dovrà essere oggetto di commit!
+
+---
+
+Si rammenta che la valutazione del progetto di laboratorio considererà anche l'uso adeguato di git da parte di ciascun membro del gruppo.
+
+## Linguaggio in cui sviluppare il laboratorio
+
+Gli esercizi vanno implementati utilizzando il linguaggio C o Java come precisato di seguito:
+
+- Esercizio 1: C
+- Esercizio 2: C
+- Esercizio 3: Java
+- Esercizio 4: Java
+
+Come indicato sotto, alcuni esercizi chiedono di implementare codice generico. Seguono alcuni suggerimenti sul modo di realizzare codice con questa caratteristica nei due linguaggi accettati.
+
+**Nota** : Con "codice generico" si intende codice che deve poter essere eseguito con tipi di dato non noti a tempo di compilazione.
+
+**Suggerimenti (C)**: Nel caso del C, è necessario capire come meglio approssimare l'idea di codice generico utilizzando quanto permesso dal linguaggio. Un approccio comune è far sì che le funzioni e le procedure presenti nel codice prendano in input puntatori a `void` e utilizzino qualche funzione fornita dall'utente per accedere alle componenti necessarie.
+
+Nota: chi è in grado di realizzare tipi di dato astratto tramite tipi opachi è incoraggiato a procedere in questa direzione.
+
+**Suggerimenti (Java)**: Sebbene in Java la soluzione più in linea con il moderno utilizzo del linguaggio richiederebbe la creazione di classi parametriche, tutte le scelte implementative (compresa la decisione di usare o meno classi parametriche) sono lasciate agli studenti. Inoltre, è possibile (e consigliato) usare gli ArrayList invece degli array nativi al fine di semplificare la realizzazione di codice generico.
+
+## Uso di librerie esterne e/o native del linguaggio scelto
+
+È vietato (sia nello sviluppo in Java che in quello in C) l'uso di strutture dati native del linguaggio scelto o offerte da librerie esterne, quando la loro realizzazione è richiesta da uno degli esercizi proposti.
+
+È, invece, possibile l'uso di strutture dati native del linguaggio o offerte da librerie esterne, se la loro realizzazione non è richiesta da uno degli esercizi proposti.
+
+Es.: nello sviluppo in Java, l'uso di ArrayList è da ritenersi possibile, se nessun esercizio chiede la realizzazione in Java di un array dinamico.
+
+## Qualità dell'implementazione
+
+È parte del mandato degli esercizi la realizzazione di codice di buona qualità.
+
+Per "buona qualità" intendiamo codice ben modularizzato, ben commentato e ben testato.
+
+**Alcuni suggerimenti:**
+
+- verificare che il codice sia suddiviso correttamente in package o moduli;
+- aggiungere un commento, prima di una definizione, che spiega il funzionamento dell'oggetto definito. Evitare quando possibile di commentare direttamente il codice interno alle funzioni/metodi implementati (se il codice è ben scritto, i commenti in genere non servono);
+- la lunghezza di un metodo/funzione è in genere un campanello di allarme: se essa cresce troppo, probabilmente è necessario rifattorizzare il codice spezzando la funzione in più parti. In linea di massima si può consigliare di intervenire quando la funzione cresce sopra le 30 righe (considerando anche commenti e spazi bianchi);
+- sono accettabili commenti in italiano, sebbene siano preferibili in inglese;
+- tutti i nomi (es., nomi di variabili, di metodi, di classi, ecc.) *devono* essere significativi e in inglese;
+- il codice deve essere correttamente indentato; impostare l'indentazione a 2 caratteri (un'indentazione di 4 caratteri è ammessa ma scoraggiata) e impostare l'editor in modo che inserisca "soft tabs" (cioè, deve inserire il numero corretto di spazi invece che un carattere di tabulazione);
+- per dare i nomi agli identificatori, seguire le convenzioni in uso per il linguaggio scelto:
+  - Java: i nomi dei package sono tutti in minuscolo senza separazione fra le parole (es. thepackage); i nomi dei tipi (classi, interfacce, ecc.) iniziano con una lettera maiuscola e proseguono in camel case (es. TheClass), i nomi dei metodi e delle variabili iniziano con una lettera minuscola e proseguono in camel case (es. theMethod), i nomi delle costanti sono tutti in maiuscolo e in formato snake case (es. THE\_CONSTANT);
+  - C:  macro e costanti sono tutti in maiuscolo e in formato snake case (es. THE\_MACRO, THE\_CONSTANT); i nomi di tipo (e.g.  struct, typedefs, enums, ...) iniziano con una lettera maiuscola e proseguono in camel case (e.g., TheType, TheStruct); i nomi di funzione iniziano con una lettera minuscola e proseguono in snake case (e.g., the\_function());
+- i file vanno salvati in formato UTF-8.
+
+# Consegne per gli esercizi
+
+**Nota** : la presente sezione contiene alcune formule descritte usando la sintassi \LaTeX. È possibile convertire l'intero documento in formato pdf - di più facile lettura - usando l'utility pandoc. Da riga di comando (Unix):
+
+pandoc README.md -o README.pdf
+
+---
+
+**Importante**: Gli esercizi richiedono (fra le altre cose) di sviluppare codice generico. Nello sviluppare questa parte, si deve assumere di stare sviluppando una libreria generica intesa come fondamento di futuri programmi. Non è pertanto lecito fare assunzioni semplificative; in generale, l'implementazione della libreria generica deve restare separata e non deve essere influenzata in alcun modo dagli usi di essa eventualmente richiesti negli esercizi (ad esempio, se un esercizio dovesse richiedere l'implementazione della struttura dati grafo e quello stesso o un altro esercizio dovesse richiedere l'implementazione, a partire da tale struttura dati, di un algoritmo per il calcolo delle componenti connesse di un grafo, l'implementazione della struttura dati deve essere separata dall'algoritmo per il calcolo delle componenti connesse e *non* deve contenere elementi – variabili, procedure, funzioni, metodi, ecc. – eventualmente utili a tale algoritmo, ma non essenziali alla struttura dati; analogamente, se un esercizio dovesse richiedere di operare su grafi con nodi di tipo stringa, l'implementazione della struttura dati grafo dovrebbe restare generica e non potrebbe quindi assumere per i nodi il solo tipo stringa).
+
+---
+
+In sede di discussione d'esame, sarà facoltà del docente chiedere di eseguire gli algoritmi implementati su dati forniti dal docente stesso. Nel caso questi dati siano memorizzati su file, questi saranno dei csv con la medesima struttura dei dataset forniti e descritti nel testo dell'esercizio. I codici sviluppati dovranno consentire un rapido e semplice adattamento agli input forniti: ad esempio, **una buona implementazione consentirà di inserire in input il nome del file su cui eseguire il test**, mentre una peggiore richiederà di modificare il codice sorgente e una successiva compilazione a fronte della sola modifica del nome del file contenente il dataset.
+
+## Unit Testing
+
+Come indicato esplicitamente nei testi degli esercizi, il progetto di laboratorio comprende anche la definizione di opportune suite di unit tests.
+
+Si rammenta, però, che il focus del laboratorio è l'implementazione di strutture dati e algoritmi. Relativamente agli unit-test sarà quindi sufficiente che gli studenti dimostrino di averne colto il senso e di saper realizzare una suite di test sufficiente a coprire i casi più comuni (compresi, in particolare, i casi limite).
+
+## Esercizio 1
+
+### Linguaggio richiesto: C
+
+### Testo
+
+Implementare una libreria che offre un algoritmo di ordinamento  `Merge-BinaryInsertion Sort`. Con `BinaryInsertion Sort` ci riferiamo a una versione dell'algoritmo `Insertion Sort` in cui la posizione, all'interno della sezione ordinata del vettore, in cui inserire l'elemento corrente è determinata tramite ricerca binaria. Il `Merge-BinaryInsertion Sort` è un algoritmo ibrido che combina `Merge Sort` e `BinaryInsertion Sort`.  L'idea è di approfittare del fatto che il `BinaryInsertion Sort` può essere più veloce del `Merge Sort` quando la sottolista da ordinare è piccola. Ciò suggerisce di considerare una modifica del `Merge Sort` in cui le sottoliste di lunghezza `k` o inferiore sono ordinate usando il  `BinaryInsertion Sort` e sono poi combinate usando il meccanismo tradizionale di fusione del `Merge Sort`. Il valore del parametro `k` dovrà essere studiato e discusso nella relazione. Ad esempio, `k=0` implica che `Merge-BinaryInsertion Sort` si comporta esattamente come il `Merge Sort` classico, mentre `k>>0` aumenta l'utilizzo del `BinaryInsertion Sort`.
+
+Il codice che implementa `Merge-BinaryInsertion Sort` deve essere generico. Inoltre, la libreria deve permettere di specificare (cioè deve accettare in input) il criterio secondo cui ordinare i dati.
+
+### Unit Testing
+
+Implementare gli unit-test per la libreria secondo le indicazioni suggerite nel documento Unit Testing.
+
+### Uso della libreria di ordinamento implementata
+
+Il file `records.csv` che potete trovare (compresso) all'indirizzo
 
 ```
-cd existing_repo
-git remote add origin https://gitlab2.educ.di.unito.it/drago/laboratorio-algoritmi-2021-2022.git
-git branch -M main
-git push -uf origin main
+https://datacloud.di.unito.it/index.php/s/X7qC8JSLNRtLxPC
 ```
 
-## Integrate with your tools
+contiene 20 milioni di record da ordinare.
+Ogni record è descritto su una riga e contiene i seguenti campi:
 
-- [ ] [Set up project integrations](https://gitlab2.educ.di.unito.it/drago/laboratorio-algoritmi-2021-2022/-/settings/integrations)
+- id: (tipo intero) identificatore univoco del record;
+- field1: (tipo stringa) contiene parole estratte dalla divina commedia,
+  potete assumere che i valori non contengano spazi o virgole;
+- field2: (tipo intero);
+- field3: (tipo floating point);
 
-## Collaborate with your team
+Il formato è un CSV standard: i campi sono separati da virgole; i record sono
+separati da `\n`.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Usando l'algoritmo implementato, si ordinino i *record* (non è sufficiente ordinare i
+singoli campi) contenuti nel file `records.csv` in ordine non decrescente secondo i valori contenuti nei tre campi "field" (cioè, per ogni valore di `k`, è necessario ripetere l'ordinamento tre volte, una volta per ciascun campo).
 
-## Test and Deploy
+Si misurino i tempi di risposta variando il valore di `k` e si produca una breve relazione in cui si riportano i risultati ottenuti insieme a un loro commento. Dimostrare nella relazione come il valore di `k` dovrebbe essere scelto nella pratica. Nel caso l'ordinamento si protragga per più di 10 minuti potete interrompere l'esecuzione e riportare un fallimento dell'operazione. I risultati sono quelli che vi sareste aspettati? Se sì, perché? Se no, fate delle ipotesi circa il motivo per cui l'algoritmo non funziona come vi aspettate, verificatele e riportate quanto scoperto nella relazione.
 
-Use the built-in continuous integration in GitLab.
+**Si ricorda che** che il file `records.csv` **NON DEVE ESSERE OGGETTO DI COMMIT SU GIT!**
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+## Esercizio 2 - Skip List
 
-***
+### Linguaggio richiesto: C
 
-# Editing this README
+### Testo
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+Realizzare una struttura dati chiamata `skip_list`. La `skip_list` è un tipo di lista concatenata che memorizza una *lista ordinata* di elementi.
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+Al contrario delle liste concatenate, la `skip_list` è una struttura dati probabilistica che permette di realizzare l'operazione di ricerca con complessità `O(log n)` in termini di tempo. Anche le operazioni di inserimento e cancellazione di elementi possono essere realizzate in tempo `O(log n)`. Per questa ragione, la `skip_list` è una delle strutture dati che vengono spesso utilizzate per indicizzare dati.
 
-## Name
-Choose a self-explaining name for your project.
+Ogni nodo di una lista concatenata contiene un puntatore all'elemento successivo nella lista. Serve quindi scorrere la lista sequenzialmente per trovare un elemento nella lista. La `skip_list` velocizza l'operazione di ricerca creando delle "vie espresse" che permettono saltare parte della lista durante l'operazione di ricerca. Questo è possibile perché ogni nodo della `skip_list` contiene non solo un singolo puntatore al prossimo elemento della lista, ma un array di puntatori che ci permettono di saltare a diversi punti seguenti nella lista. Un esempio di questo schema è rappresentato nella figura in seguito.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+![Esempio di una `skip_list`. Dal nodo che contiene il numero 6 si può saltare direttamente ai nodi 9 e 25, senza scorrere gli altri nodi.](skiplist.png)
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Si implementi quindi una libreria che realizza la struttura dati `skip_list`. L'implementazione deve essere generica per quanto riguarda il tipo dei dati memorizzati nella struttura. Come suggerimento, una possibile definizione del tipo di dati `skip_list` è la seguente:
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+```
+#define MAX_HEIGHT ....
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+typedef struct _SkipList SkipList;
+typedef struct _Node Node;
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+struct _SkipList {
+  Node *head;
+  unsigned int max_level;
+  int (*compare)(void*, void*);
+};
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+struct _Node {
+  Node **next;
+  unsigned int size;
+  void *item;
+};
+```
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Dove:
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+- `MAX_HEIGHT`: è una costante che definisce il massimo numero di puntatori che possono esserci in un singolo nodo della `skip_list`. Come si vede nella figura, ogni nodo può avere un numero distinto di puntatori.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+- `unsigned int size`: è il numero di puntatori in un dato nodo della `skip_list`.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+- `unsigned int max_level`: determina il massimo attuale tra i vari `size`.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+La libreria deve includere le due operazioni elencate di sotto, che sono riportate in pseudo-codice. Tradurre il pseudo-codice in C.
 
-## License
-For open source projects, say how it is licensed.
+##### insertSkipList: Inserisce I nella skiplist ``list``
+```
+insertSkipList(list, I)
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+    new = createNode(I, randomLevel())
+    if new->size > list->max_level
+        list->max_level = new->size
+
+    x = list->head;
+    for k = list->max_level downto 1 do
+        if (x->next[k] == NULL || I < x->next[k]->item)
+            if k < new->size {
+              new->next[k] = x->next[k]
+              x->next[k] = new
+            }
+        else
+            x = x->next[k];
+```
+
+La funzione ``randomLevel()`` determina il numero di puntatori da includere nel nuovo nodo. Deve essere realizzata conforme il seguente algoritmo. Spiegare il vantaggio di questo algoritmo nella relazione da consegnare con l'esercizio:
+```
+randomLevel()
+    lvl := 1
+
+    -- random() returns a random value in [0...1)
+    while random() < 0.5 and lvl < MAX_HEIGHT do
+        lvl := lvl + 1
+    return lvl
+```
+
+#####  searchSkipList: Verifica se I è presente nella skiplist list
+```
+searchSkipList(list, I)
+    x = list->head
+
+    // loop invariant: x->item < I
+    for i = list->max_level downto 1 do
+        while x->next[i]->item < I do
+            x = x->next[i]
+
+    // x->item < I <= x->next[1]->item
+    x = x->next[1]
+    if x->item == item then
+        return x->item
+    else
+        return failure
+```
+
+
+La libreria deve anche includere delle funzioni che permettono di creare una `skip_list` vuota e cancellare completamente una `skip_list` esistente. Quest'ultima operazione, in particolare, deve liberare correttamente tutta la memoria allocata per la `skip_list`.
+
+
+### Unit Testing
+
+Implementare gli unit-test per tutte le operazioni della `skip_list` secondo le indicazioni suggerite nel documento Unit Testing.
+
+### Uso delle funzioni implementate
+
+All'indirizzo
+
+```
+https://datacloud.di.unito.it/index.php/s/XXXXXXXXXXXXXXXXXX
+```
+potete trovare dei dizionari (e.g., `dict_english.txt`) e un file da correggere (`correctme.txt`).
+
+Il dizionario contiene un elenco di parole. Le parole sono scritte di seguito, ciascuna su una riga.
+
+Il file `correctme.txt` contiene un testo da correggere. Il testo presenta alcuni errori di battitura.
+
+Si implementi una applicazione che usa la struttura dati ``skip_list`` per determinare di forma efficiente la lista di parole in ``correctme.txt`` non presente nel dizionario dato come input al programma.
+
+Si sperimenti il funzionamento dell'applicazione considerando diversi valori per la constante ``MAX_HEIGHT``, riportando in una breve relazione (circa una pagina) i risultati degli esperimenti.
+
+**Si ricorda** che i dizionari e `correctme.txt` **NON DEVONO ESSERE OGGETTO DI COMMIT SU GIT!**
+
+### Condizioni della consegna:
+
+-– Creare una sottocartella chiamata ``ex2`` all'interno del repository.
+
+-- La consegna deve obbligatoriamente contenere un `Makefile`. Il `Makefile` deve produrre all'interno di ``ex2/build`` un file eseguibile chiamato ``main_ex2``.
+
+-- ``main_ex2`` deve ricevere come parametri il path del dizionario da usare come riferimento e il file da correggere, necessariamente in quest'ordine. Il risultato va stampato a schermo, con le parole ordinate come nel file da correggere. Per esempio:
+
+```
+$ ./main_ex2 ../data/dict/en_sorted ../data/correctme.txt
+list-like
+subsequences
+subsequence
+subsequence
+subsequence
+```
+
+## Esercizio 3
+
+### Linguaggio richiesto: Java
+
+### Testo
+
+Si implementi la struttura dati Union-Find Set (con le euristiche di unione per rango e compressione del cammino). La struttura dati deve permettere di inserire oggetti di
+tipo generico e non prevedere un insieme iniziale finito di elementi.
+
+Una descrizione della Union-Find Set è riportata sul testo Cormen et al., `Introduzione agli algoritmi e strutture dati`, McGraw-Hill, nel capitolo `Strutture dati per insiemi disgiunti`, paragrafo `Foreste di insiemi disgiunti`.
+
+### Unit Testing
+
+Implementare gli unit-test degli algoritmi secondo le indicazioni suggerite nel documento Unit Testing.
+
+## Esercizio 4
+
+### Linguaggio richiesto: Java
+
+### Testo
+
+Si implementi una libreria che realizza la struttura dati Grafo in modo che **sia ottimale per dati sparsi**
+(IMPORTANTE: le scelte implementative che farete dovranno essere giustificate in relazione alle nozioni presentate
+durante le lezioni in aula). La struttura deve consentire di rappresentare sia grafi diretti che grafi non diretti
+(suggerimento:  un grafo non diretto può essere rappresentato usando un'implementazione per grafi diretti modificata
+per garantire che, per ogni arco (a,b), etichettato w, presente nel grafo, sia presente nel grafo anche l'arco (b,a),
+etichettato w. Ovviamente, il grafo dovrà mantenere l'informazione che specifica se esso è un grafo diretto o non diretto.).
+
+L'implementazione deve essere generica sia per quanto riguarda il tipo dei nodi, sia per quanto riguarda le etichette
+degli archi.
+
+La struttura dati implementata dovrà offrire (almeno) le seguenti operazioni (accanto ad ogni operazione è specificata la
+complessità richiesta; n può indicare il numero di nodi o il numero di archi, a seconda del contesto):
+
+- Creazione di un grafo vuoto – O(1)
+- Aggiunta di un nodo – O(1)
+- Aggiunta di un arco – O(1)
+- Verifica se il grafo è diretto – O(1)
+- Verifica se il grafo contiene un dato nodo – O(1)
+- Verifica se il grafo contiene un dato arco – O(1)  (*)
+- Cancellazione di un nodo – O(n)
+- Cancellazione di un arco – O(1)  (*)
+- Determinazione del numero di nodi – O(1)
+- Determinazione del numero di archi – O(n)
+- Recupero dei nodi del grafo – O(n)
+- Recupero degli archi del grafo – O(n)
+- Recupero nodi adiacenti di un dato nodo – O(1)  (*)
+- Recupero etichetta associata a una coppia di nodi – O(1) (*)
+
+(*) quando il grafo è veramente sparso, assumendo che l'operazione venga effettuata su un nodo la cui lista di adiacenza ha una lunghezza in O(1).
+
+### Unit Testing
+
+Implementare gli unit-test degli algoritmi secondo le indicazioni suggerite nel documento Unit Testing.
+
+### Uso della libreria che implementa la struttura dati Grafo
+
+Si implementi l'algoritmo di Kruskal per la determinazione della minima foresta  ricoprente di un grafo.
+
+L'implementazione dell'algoritmo di Kruskal dovrà utilizzare la struttura dati Union-Find Set implementata nell'esercizio precedente.
+
+N.B. Nel caso in cui il grafo sia costituito da una sola componente connessa,
+l'algoritmo restituirà un albero; nel caso in cui, invece, vi siano più componenti connesse,
+l'algoritmo restituirà una foresta costituita dai minimi alberi ricoprenti di ciascuna componente connessa.
+
+### Uso delle librerie che implementano la struttura dati Grafo e l'algoritmo di Kruskal
+
+La struttura dati Grafo e l'algoritmo di Kruskal dovranno essere utilizzati con i dati contenuti nel file italian\_dist\_graph.csv.
+
+Il file italian\_dist\_graph.csv che potete trovare all'indirizzo
+
+```
+https://datacloud.di.unito.it/index.php/s/PirTJpq4JMnpH3G
+```
+
+contiene le distanze in metri tra varie località
+italiane e una frazione delle località a loro più vicine.
+Il formato è un CSV standard: i campi sono separati da virgole; i record sono separati dal carattere di fine
+riga (\\n).
+
+Ogni record contiene i seguenti dati:
+
+- località 1: (tipo stringa) nome della località "sorgente". La stringa può contenere spazi, non può contenere virgole;
+- località 2: (tipo stringa) nome della località "destinazione". La stringa  può contenere spazi, non può contenere virgole;
+- distanza: (tipo float) distanza in metri tra le due località.
+
+**Note** :
+
+- potete interpretare le informazioni presenti nelle righe del file come   archi non diretti (pertanto, si suggerisce di inserire nel grafo sia l'arco di andata che quello di ritorno a fronte di ogni riga letta).
+- il file è stato creato a partire da un dataset poco accurato. I dati riportati contengono inesattezze e imprecisioni.
+
+**Si ricorda** il file italian\_dist\_graph.csv **NON DEVE ESSERE OGGETTO DI COMMIT SU GIT!**
+
+**Controlli**
+
+Un'implementazione corretta dell'algoritmo di Kruskal, eseguita sui dati
+contenuti nel file italian\_dist\_graph.csv, dovrebbe determinare una minima foresta ricoprente con
+18.640 nodi, 18.637 archi (non orientati) e di peso complessivo di circa 89.939,913 Km.
