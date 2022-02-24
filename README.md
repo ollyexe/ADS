@@ -282,7 +282,7 @@ Si sperimenti il funzionamento dell'applicazione considerando diversi valori per
 
 **Si ricorda** che i dizionari e `correctme.txt` **NON DEVONO ESSERE OGGETTO DI COMMIT SU GIT!**
 
-### Condizioni della consegna:
+### Condizioni per la consegna:
 
 -- Creare una sottocartella chiamata ``ex2`` all'interno del repository.
 
