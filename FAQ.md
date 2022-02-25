@@ -12,8 +12,7 @@
       - se la cifra è dispari frequentare turni dispari
 
   Riassumendo:
-
-- studenti del corso A con la seconda cifra meno signifi- cativa della matricola dispari saranno assegnati al turno 1
+- studenti del corso A con la seconda cifra meno significativa della matricola dispari saranno assegnati al turno 1
 - studenti del corso A con la seconda cifra meno significativa della matricola pari saranno assegnati al turno 2
 - studenti del corso B con la seconda cifra meno significativa della matricola dispari saranno assegnati al turno 3
 - studenti del corso B con la seconda cifra meno significativa della matricola pari saranno assegnati al turno 4
