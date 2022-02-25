@@ -19,7 +19,7 @@
 
 **Q: Sono uno studente assegnato al turno X posso spostarmi al turno Y?**
 
-**A**: sì, a patto che trovi un collega del turno Y che accetta di frequentare il turno X. Il cambiamento va comunicato ai docenti **entro e non oltre il 25 marzo 2021**.
+**A**: sì, a patto che trovi un collega del turno Y che accetta di frequentare il turno X. Il cambiamento va comunicato ai docenti **entro e non oltre il 25 marzo 2022**.
 
 **Q: Sono uno studente che ha già preparato il laboratorio dell'anno accademico 2020/2021. Posso sostenere la prova di laboratorio discutendo gli esercizi dello scorso a.a.?**
 
@@ -40,3 +40,7 @@
 **Q: È possibile avere una linea guida più netta riguardo l'implementazione, il design delle API, etc.?**
 
 **A**: Parte del mandato degli esercizi è la richiesta di prendere decisioni circa come procedere con lo sviluppo del codice. Il design delle API, il livello di fattorizzazione dei metodi, etc. sono tutte decisioni lasciate allo studente di cui si può discutere di persona durante le lezioni e che andranno difese in sede d'esame.
+
+**Q: E' possibile sostenere la prova di esame di laboratorio da remoto?**
+
+**A**: Le discussioni di laboratorio seguiranno le regole previste dall'Ateneo e dal corso di laurea, incluse le eccezioni per studenti residenti fuori regione e/o con fragilità. Le comunicazioni in merito verranno fornite mediante la pagina moodle dell'insegnamento.
