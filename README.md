@@ -127,7 +127,7 @@ Si rammenta, però, che il focus del laboratorio è l'implementazione di struttu
 
 ### Testo
 
-Implementare una libreria che offre due algoritmi di ordinamento `Quick Sort` e `BinaryInsertion Sort`. Con `BinaryInsertion Sort` ci riferiamo a una versione dell'algoritmo `Insertion Sort` in cui la posizione, all'interno della sezione ordinata del vettore, in cui inserire l'elemento corrente è determinata tramite ricerca binaria. Nell'implementazione del `Quick Sort`, la scelta del `pivot` dovrà essere studiato e discusso nella relazione. 
+Implementare una libreria che offre due algoritmi di ordinamento `Quick Sort` e `BinaryInsertion Sort`. Con `BinaryInsertion Sort` ci riferiamo a una versione dell'algoritmo `Insertion Sort` in cui la posizione, all'interno della sezione ordinata del vettore, in cui inserire l'elemento corrente è determinata tramite ricerca binaria. Nell'implementazione del `Quick Sort`, la scelta del `pivot` dovrà essere studiato e discusso nella relazione.
 
 Il codice che implementa `Quick Sort` e `BinaryInsertion Sort` deve essere generico. Inoltre, la libreria deve permettere di specificare (cioè deve accettare in input) il criterio secondo cui ordinare i dati.
 
@@ -158,7 +158,7 @@ separati da `\n`.
 Usando gli algoritmi `Quick Sort` e `BinaryInsertion Sort` implementati, si ordinino i *record* (non è sufficiente ordinare i
 singoli campi) contenuti nel file `records.csv` in ordine non decrescente secondo i valori contenuti nei tre campi "field" (pertanto, è necessario ripetere l'ordinamento tre volte, una volta per ciascun campo).
 
-Si misurino i tempi di risposta variando il valore del `pivot` nel `Quick Sort` e si produca una breve relazione in cui si riportano i risultati ottenuti insieme a un loro commento. Nel caso l'ordinamento si protragga per più di 10 minuti potete interrompere l'esecuzione e riportare un fallimento dell'operazione. 
+Si misurino i tempi di risposta variando il valore del `pivot` nel `Quick Sort` e si produca una breve relazione in cui si riportano i risultati ottenuti insieme a un loro commento. Nel caso l'ordinamento si protragga per più di 10 minuti potete interrompere l'esecuzione e riportare un fallimento dell'operazione.
 
 I risultati sono quelli che vi sareste aspettati? Se sì, perché? Se no, fate delle ipotesi circa il motivo per cui gli algoritmi non funzionano come vi aspettate, un algoritmo offre delle prestazioni migliori dell'altro, la scelta del `pivot` influenza le prestazioni di `Quick Sort`. Verificatele e riportate quanto scoperto nella relazione.
 
@@ -307,14 +307,29 @@ subsequence
 
 ### Testo
 
-Si implementi la struttura dati Union-Find Set (con le euristiche di unione per rango e compressione del cammino). La struttura dati deve permettere di inserire oggetti di
-tipo generico e non prevedere un insieme iniziale finito di elementi.
+Si implementi una libreria che realizza la struttura dati Heap Minimo. La struttura dati deve:
+- rappresentare internamente lo heap tramite un vettore (è possibile usare anche altre strutture interne di supporto, se necessarie);
+- consentire un numero qualunque e non noto a priori di elementi dello heap;
+- essere generica per quanto riguarda il tipo degli elementi dello heap;
+- essere generica per quanto riguarda il criterio di confronto fra elementi dello heap.
 
-Una descrizione della Union-Find Set è riportata sul testo Cormen et al., `Introduzione agli algoritmi e strutture dati`, McGraw-Hill, nel capitolo `Strutture dati per insiemi disgiunti`, paragrafo `Foreste di insiemi disgiunti`.
+Essa deve, inoltre, offrire (almeno) le seguenti operazioni (accanto a ogni operazione è specificata la
+complessità richiesta, in cui n indica il numero di elementi dello heap):
+- creazione di uno heap minimo vuoto - O(1);
+- inserimento di un elemento - O(log n);
+- restituzione della dimensione dello heap - O(1);
+- restituzione del genitore di un elemento - O(1);
+- restituzione del figlio sinistro di un elemento - O(1);
+- restituzione del figlio destro di un elemento - O(1);
+- estrazione dell'elemento con valore minimo - O(log n);
+- diminuzione del valore di un elemento - O(log n).
+
+Una descrizione della struttura dati Heap è riportata sui lucidi e le dispense fornite nella parte di teoria del corso,
+ nonché sul testo Cormen et al, `Introduzione agli algoritmi e strutture dati`, McGraw-Hill, Terza edizione, 2010, nel capitolo `Heapsort`. In particolare, si suggerisce il riferimento al testo per tutti quegli aspetti non esplicitamente trattati a lezione.
 
 ### Unit Testing
 
-Implementare gli unit-test degli algoritmi secondo le indicazioni suggerite nel documento Unit Testing.
+Implementare gli unit-test per la libreria secondo le indicazioni suggerite nel documento Unit Testing.
 
 ## Esercizio 4
 
@@ -332,7 +347,7 @@ etichettato w. Ovviamente, il grafo dovrà mantenere l'informazione che specific
 L'implementazione deve essere generica sia per quanto riguarda il tipo dei nodi, sia per quanto riguarda le etichette
 degli archi.
 
-La struttura dati implementata dovrà offrire (almeno) le seguenti operazioni (accanto ad ogni operazione è specificata la
+La struttura dati implementata dovrà offrire (almeno) le seguenti operazioni (accanto a ogni operazione è specificata la
 complessità richiesta; n può indicare il numero di nodi o il numero di archi, a seconda del contesto):
 
 - Creazione di un grafo vuoto – O(1)
@@ -354,19 +369,18 @@ complessità richiesta; n può indicare il numero di nodi o il numero di archi, 
 
 ### Unit Testing
 
-Implementare gli unit-test degli algoritmi secondo le indicazioni suggerite nel documento Unit Testing.
+Implementare gli unit-test per la libreria secondo le indicazioni suggerite nel documento Unit Testing.
 
-### Uso della libreria che implementa la struttura dati Grafo
+### Uso delle librerie che implementano la struttura dati Grafo e la struttura dati Heap
 
-Si implementi l'algoritmo di Kruskal per la determinazione della minima foresta  ricoprente di un grafo.
+Si implementi l'algoritmo di Dijkstra per determinare i cammini minimi da sorgente unica in un grafo orientato pesato, con pesi degli archi tutti non negativi.
 
-L'implementazione dell'algoritmo di Kruskal dovrà utilizzare la struttura dati Union-Find Set implementata nell'esercizio precedente.
+L'implementazione dell'algoritmo di Dijkstra dovrà operare su un grafo realizzato tramite la libreria implementata secondo le specifiche fornite sopra e dovrà inoltre utilizzare al proprio interno una coda di priorità minima rappresentata con un heap realizzato con la libreria implementata secondo le specifiche dell'Esercizio 3.
 
-N.B. Nel caso in cui il grafo sia costituito da una sola componente connessa,
-l'algoritmo restituirà un albero; nel caso in cui, invece, vi siano più componenti connesse,
-l'algoritmo restituirà una foresta costituita dai minimi alberi ricoprenti di ciascuna componente connessa.
 
-### Uso delle librerie che implementano la struttura dati Grafo e l'algoritmo di Kruskal
+### Uso della libreria che implementa la struttura dati Grafo e dell'algoritmo di Dijkstra
+
+Si scriva un'applicazione che utilizza l'algoritmo di Dijkstra implementato
 
 La struttura dati Grafo e l'algoritmo di Kruskal dovranno essere utilizzati con i dati contenuti nel file italian\_dist\_graph.csv.
 
@@ -396,6 +410,6 @@ Ogni record contiene i seguenti dati:
 
 **Controlli**
 
-Un'implementazione corretta dell'algoritmo di Kruskal, eseguita sui dati
-contenuti nel file italian\_dist\_graph.csv, dovrebbe determinare una minima foresta ricoprente con
-18.640 nodi, 18.637 archi (non orientati) e di peso complessivo di circa 89.939,913 Km.
+Un'implementazione corretta dell'algoritmo di Dijkstra, eseguita sui dati
+contenuti nel file italian\_dist\_graph.csv, dovrebbe determinare un cammino
+minimo tra "torino" e "catania" lungo ~1207.68 Km.
