@@ -380,17 +380,13 @@ L'implementazione dell'algoritmo di Dijkstra dovrà operare su un grafo realizza
 
 ### Uso della libreria che implementa la struttura dati Grafo e dell'algoritmo di Dijkstra
 
-Si scriva un'applicazione che utilizza l'algoritmo di Dijkstra implementato
-
-La struttura dati Grafo e l'algoritmo di Kruskal dovranno essere utilizzati con i dati contenuti nel file italian\_dist\_graph.csv.
-
-Il file italian\_dist\_graph.csv che potete trovare all'indirizzo
+Si scriva un'applicazione che utilizza l'algoritmo di Dijkstra implementato per determinare i cammini minimi dalla città di Torino sul grafo descritto nel file italian\_dist\_graph.csv che potete trovare all'indirizzo
 
 ```
 https://datacloud.di.unito.it/index.php/s/PirTJpq4JMnpH3G
 ```
 
-contiene le distanze in metri tra varie località
+Tale file contiene le distanze in metri tra alcune località
 italiane e una frazione delle località a loro più vicine.
 Il formato è un CSV standard: i campi sono separati da virgole; i record sono separati dal carattere di fine
 riga (\\n).
