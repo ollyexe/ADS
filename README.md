@@ -276,7 +276,7 @@ potete trovare un dizionario (`dict_it.txt`) e un file da correggere (`correctme
 
 Il dizionario contiene un elenco di parole. Le parole sono scritte di seguito, ciascuna su una riga.
 
-Il file `correctme.txt` contiene un testo da correggere. Alcuni parole in questo testo non ci sono nel dizionario.
+Il file `correctme.txt` contiene un testo da correggere. Alcune parole in questo testo non ci sono nel dizionario.
 
 Si implementi una applicazione che usa la struttura dati ``skip_list`` per determinare di forma efficiente la lista di parole nel testo da correggere non presente nel dizionario dato come input al programma.
 
