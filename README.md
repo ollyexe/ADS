@@ -231,11 +231,11 @@ insertSkipList(list, I)
 La funzione ``randomLevel()`` determina il numero di puntatori da includere nel nuovo nodo e deve essere realizzata conformemente al seguente algoritmo. Spiegare il vantaggio di questo algoritmo nella relazione da consegnare con l'esercizio:
 ```
 randomLevel()
-    lvl := 1
+    lvl = 1
 
-    -- random() returns a random value in [0...1)
+    // random() returns a random value in [0...1)
     while random() < 0.5 and lvl < MAX_HEIGHT do
-        lvl := lvl + 1
+        lvl = lvl + 1
     return lvl
 ```
 
@@ -272,7 +272,7 @@ All'indirizzo
 ```
 https://datacloud.di.unito.it/index.php/s/taii8aA8rNnXgCN
 ```
-potete trovare un dizionario (`dict_it.txt`) e un file da correggere (`correctme.txt`).
+potete trovare un dizionario (`dizionario.txt`) e un file da correggere (`correctme.txt`).
 
 Il dizionario contiene un elenco di parole. Le parole sono scritte di seguito, ciascuna su una riga.
 
@@ -293,11 +293,15 @@ Si sperimenti il funzionamento dell'applicazione considerando diversi valori per
 -- ``main_ex2`` deve ricevere come parametri il path del dizionario da usare come riferimento e il file da correggere, necessariamente in quest'ordine. Il risultato va stampato a schermo, con le parole ordinate come nel file da correggere. Per esempio:
 
 ```
-$ ./main_ex2 /tmp/data/dict_it.txt /tmp/data/testo.txt
-skiplist
-mamoria
-segmentation
-fault
+$ ./main_ex2 /tmp/data/didizionario.txt /tmp/data/correctme.txt 
+cinqve
+perpeteva
+squola
+domandrono
+vuolessi
+scrissi
+corpito
+wita
 ```
 
 ## Esercizio 3
