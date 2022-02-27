@@ -270,13 +270,13 @@ Implementare gli unit-test per tutte le operazioni della `skip_list` secondo le 
 All'indirizzo
 
 ```
-https://datacloud.di.unito.it/index.php/s/XXXXXXXXXXXXXXXXXX
+https://datacloud.di.unito.it/index.php/s/taii8aA8rNnXgCN
 ```
 potete trovare un dizionario (`dict_it.txt`) e un file da correggere (`correctme.txt`).
 
 Il dizionario contiene un elenco di parole. Le parole sono scritte di seguito, ciascuna su una riga.
 
-Il file `correctme.txt` contiene un testo da correggere. Il testo presenta alcuni errori di battitura.
+Il file `correctme.txt` contiene un testo da correggere. Alcuni parole in questo testo non ci sono nel dizionario.
 
 Si implementi una applicazione che usa la struttura dati ``skip_list`` per determinare di forma efficiente la lista di parole nel testo da correggere non presente nel dizionario dato come input al programma.
 
@@ -294,9 +294,8 @@ Si sperimenti il funzionamento dell'applicazione considerando diversi valori per
 
 ```
 $ ./main_ex2 /tmp/data/dict_it.txt /tmp/data/testo.txt
-allocasione
-mamoria
 skiplist
+mamoria
 segmentation
 fault
 ```
