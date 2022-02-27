@@ -217,7 +217,7 @@ insertSkipList(list, I)
     if new->size > list->max_level
         list->max_level = new->size
 
-    x = list->head;
+    x = list->head
     for k = list->max_level downto 1 do
         if (x->next[k] == NULL || I < x->next[k]->item)
             if k < new->size {
@@ -272,7 +272,7 @@ All'indirizzo
 ```
 https://datacloud.di.unito.it/index.php/s/XXXXXXXXXXXXXXXXXX
 ```
-potete trovare un dizionario (`dict_english.txt`) e un file da correggere (`correctme.txt`).
+potete trovare un dizionario (`dict_it.txt`) e un file da correggere (`correctme.txt`).
 
 Il dizionario contiene un elenco di parole. Le parole sono scritte di seguito, ciascuna su una riga.
 
@@ -282,7 +282,7 @@ Si implementi una applicazione che usa la struttura dati ``skip_list`` per deter
 
 Si sperimenti il funzionamento dell'applicazione considerando diversi valori per la constante ``MAX_HEIGHT``, riportando in una breve relazione (circa una pagina) i risultati degli esperimenti.
 
-**Si ricorda** che i dizionari e `correctme.txt` **NON DEVONO ESSERE OGGETTO DI COMMIT SU GIT!**
+**Si ricorda** che il dizionario e `correctme.txt` **NON DEVONO ESSERE OGGETTO DI COMMIT SU GIT!**
 
 ### Condizioni per la consegna:
 
@@ -293,12 +293,12 @@ Si sperimenti il funzionamento dell'applicazione considerando diversi valori per
 -- ``main_ex2`` deve ricevere come parametri il path del dizionario da usare come riferimento e il file da correggere, necessariamente in quest'ordine. Il risultato va stampato a schermo, con le parole ordinate come nel file da correggere. Per esempio:
 
 ```
-$ ./main_ex2 /tmp/data/dict_english.txt /tmp/data/correctme.txt
-list-like
-subsequences
-subsequence
-subsequence
-subsequence
+$ ./main_ex2 /tmp/data/dict_it.txt /tmp/data/testo.txt
+allocasione
+mamoria
+skiplist
+segmentation
+fault
 ```
 
 ## Esercizio 3
