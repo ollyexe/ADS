@@ -22,7 +22,7 @@ int find_capacity(int a[]){
 
 void print_array(int a[]){
     int i = 0;
-    int capacity = 6;
+    int capacity = 5;
     while(i < capacity){
         printf("%d ",a[i]);
         i++;
@@ -31,26 +31,50 @@ void print_array(int a[]){
 }
 
 static int int_cmp(void *id1, void *id2){
-    return (int *)id1 - (int *)id2;
+    if(*((int*)id1) < *((int*)id2)){
+        return -1;
+    }else if(*((int*)id1) == *((int*)id2)){
+        return 0;
+    }else 
+        return 1;
 }
-
-/*
-static int id_cmp(void *r1, void *r2){
-	Row *id1 = (Row*)r1;
-	Row *id2 = (Row*)r2;
-	if(id1->id_row < 0 || id2->id_row < 0) fprintf(stderr, "errore id null");
-	return id1->id_row - id2->id_row;
-}
-*/
 
 
 int main (){
-    int a[] = {3, 4, 1, 0, 12, 10};
+    int a[] = {0, 12, 3, 5, 1};
     puts("Print before quicksort...");
     print_array(a);
-    quicksort(a, sizeof(int), 0, 5, int_cmp);
+    quicksort(a, sizeof(int), 0, 4, int_cmp); // capacity - 1
     puts("Print after quicksort...");
     print_array(a);
+
+    int b[] = {15, 29, 2, 4, 11};
+    puts("Print before quicksort...");
+    print_array(b);
+    quicksort(b, sizeof(int), 0, 4, int_cmp); // capacity - 1
+    puts("Print after quicksort...");
+    print_array(b);
+
+    int c[] = {12, 2, 9, 3, 4};
+    puts("Print before quicksort...");
+    print_array(c);
+    quicksort(c, sizeof(int), 0, 4, int_cmp); // capacity - 1
+    puts("Print after quicksort...");
+    print_array(c);
+
+    int d[] = {12, 2, 9, 3, 12};
+    puts("Print before quicksort...");
+    print_array(d);
+    quicksort(d, sizeof(int), 0, 4, int_cmp); // capacity - 1
+    puts("Print after quicksort...");
+    print_array(d);
+
+    int e[5];
+    puts("Print before quicksort...");
+    print_array(e);
+    quicksort(e, sizeof(int), 0, 4, int_cmp); // capacity - 1
+    puts("Print after quicksort...");
+    print_array(e);
 
     return 0;
 }
