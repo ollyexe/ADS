@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -38,7 +37,31 @@ static int int_cmp(void *id1, void *id2){
     }else 
         return 1;
 }
+/*
+static int id_cmp(void *r1, void *r2){
+    Record *id1 = (Record *) r1;
+    Record *id2 = (Record *) r2;
+    if(id1->id_rec < 0 || id2->id_rec < 0){
+        fprintf(stderr, "id_cmp -> id NULL\n");
+        exit(EXIT_FAILURE);
+    }else if(id1->id_rec <= id2->id_rec)
+        return -1;
+    else
+        return 1;
+}
 
+static int int_cmp(void *r1, void *r2){
+    Record *id1 = (Record *) r1;
+    Record *id2 = (Record *) r2;
+    if(id1->int_rec < 0 || id2->int_rec < 0){
+        fprintf(stderr, "id_cmp -> id NULL\n");
+        exit(EXIT_FAILURE);
+    }else if(id1->int_rec <= id2->int_rec)
+        return -1;
+    else
+        return 1;
+}
+*/
 /*
 
 static void print_rec(Record *r, unsigned long capacity){
@@ -49,7 +72,7 @@ static void print_rec(Record *r, unsigned long capacity){
 
 
 
-static void load_file(FILE *fp, unsigned long *cap){
+static Record* load_file(FILE *fp, unsigned long *cap){
 
     long unsigned int i;
     char buffer[BUFFER_SIZE];
@@ -73,9 +96,9 @@ static void load_file(FILE *fp, unsigned long *cap){
     // tokenizzo la riga
         //strcpy(buffer, riga); // dest -> src copio riga nel buffer
         char *tmp_id = strtok(riga, ",");
-        char *tmp_str = strtok(riga, ",");
-        char *tmp_int = strtok(riga, ",");
-        char *tmp_dbl = strtok(riga, ",");
+        char *tmp_str = strtok(NULL, ",");
+        char *tmp_int = strtok(NULL, ",");
+        char *tmp_dbl = strtok(NULL, ",");
 
     // check se c'è abbastanza capienza nell'array e realloc
         if(i == capacity){
@@ -94,7 +117,7 @@ static void load_file(FILE *fp, unsigned long *cap){
         csv[i].int_rec = atoi(tmp_int);
         csv[i].doub_rec = atoi(tmp_dbl);
     
-
+        return csv;
     }
 }
 
@@ -103,10 +126,29 @@ static void load_file(FILE *fp, unsigned long *cap){
 
 
 
+int main (/*int argc, char **argv*/){
+/*
+    unsigned long int capacity = INIT_SIZE;
 
-int main (){
+    if(argc < 3){
+        fprintf(stderr, "Main -> argc error\n");
+        exit(EXIT_FAILURE);
+    }
+    
+    FILE *fp = fopen(argv[1], "r");
+    if(fp == NULL){
+        fprintf(stderr, "MAIN -> Error opening file...");
+        exit(EXIT_FAILURE);
+    }
+
+    Record *csv = load_file(fp, &capacity);
+
+*/
+
+
+
     /*  TESTING HIGH QUICKSORT  */  /* EVERYTHING OK */
-/* 
+
     int a[] = {0, 12, 3, 5, 1, 6, 23, 97, 46, 8};
     puts("Print before quicksort...");
     print_array(a);
@@ -141,10 +183,10 @@ int main (){
     high_quicksort(e, sizeof(int), 0, 9, int_cmp); // capacity - 1
     puts("Print after quicksort...");
     print_array(e);
-*/
+
 
     /*  TESTING LOW QUICKSORT   */  /* EVERYTHING OK */
-
+/*
     int a[] = {0, 12, 3, 5, 1, 6, 23, 97, 46, 8};
     puts("Print before quicksort...");
     print_array(a);
@@ -179,6 +221,31 @@ int main (){
     low_quicksort(e, sizeof(int), 0, 9, int_cmp); // capacity - 1
     puts("Print after quicksort...");
     print_array(e);
-    
+*/
+
     exit(EXIT_SUCCESS);
 }
+/*
+CC = gcc 
+CFLAGS = -g -O2 -Wall -Wextra -Wpedantic -Wconversion
+RUN = ./bin/maintest
+
+all: bin/maintest
+
+bin/maintest: build/library.o build/maintest.o
+	$(CC) $(CFLAGS) -o bin/maintest build/maintest.o build/library.o
+	mv maintest bin
+	
+build/library.o: src/library.c src/library.h
+	$(CC) $(CFLAGS) -c src/library.c
+	mv library.o build
+
+build/maintest.o: src/maintest.c src/library.h
+	$(CC) $(CFLAGS) -c src/maintest.c
+	mv maintest.o build
+run:
+	$(RUN)
+	
+clean:
+	rm -f bin/maintest build/library.o build/maintest.o
+    */

@@ -1,9 +1,23 @@
-
 CC = gcc 
 CFLAGS = -g -O2 -Wall -Wextra -Wpedantic -Wconversion
+RUN = ./bin/maintest
 
-maintest: maintest.c library.o
-	${CC} ${CFLAGS} maintest.c library.o -o maintest
+all: bin/maintest
 
-library.o: library.c
-	${CC} ${CFLAGS} library.c -c
+bin/maintest: build/library.o build/maintest.o
+	$(CC) $(CFLAGS) -o $@ $^
+	mv maintest bin
+	
+build/library.o: src/library.c src/library.h
+	$(CC) $(CFLAGS) -c $<
+	mv library.o build
+
+build/maintest.o: src/maintest.c src/library.h
+	$(CC) $(CFLAGS) -c $<
+	mv maintest.o build
+	
+run:
+	$(RUN)
+	
+clean:
+	rm -f bin/maintest build/library.o build/maintest.o

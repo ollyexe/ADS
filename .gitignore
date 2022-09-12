@@ -1,0 +1,7 @@
+#file
+*.csv
+*.o
+*.txt
+
+#folders
+bin/*

@@ -15,14 +15,16 @@ void swap(void *low, void *high, unsigned long size){ /* num of bytes to copy*/
     memcpy(high, tmp, size);
 }
 
+//  HIGH QUICKSORT
+
 static int high_partition(void *array, unsigned long  size, int low, int high, int (*compare)(void *, void *)){
     int j, i;
     char *pt = (char*)array;                /* copy so I can calculate element position*/ /* use char* because can do the cast*/
     void *pivot = pt + ((unsigned long)high * size);       /* pivot is always the last element in the array*/
     i = low;                                /* i and j determine where the swap is gonna happen*/
     for(j = low; j < high; j++){            // se j < pivot devo i++                                     
-        if((*compare)(((char*)array + ((unsigned long)j * size)), (void*) pivot) <= 0){               // compare se j > pivot return 1     
-            swap((char*)array + ((unsigned long)i * size), (char*)array + ((unsigned long)j * size), size);     /* swap when I find an element (pos j) < pivot, so elements less than pivot are on left*/
+        if((*compare)((pt + ((unsigned long)j * size)), (void*) pivot) <= 0){               // compare se j > pivot return 1     
+            swap(pt + ((unsigned long)i * size), pt + ((unsigned long)j * size), size);     /* swap when I find an element (pos j) < pivot, so elements less than pivot are on left*/
             i++;                    /* increment because I have to find the right pivot position*/                                                                          
         }
     }
@@ -31,7 +33,7 @@ static int high_partition(void *array, unsigned long  size, int low, int high, i
 }
 void high_quicksort(void *array, unsigned long size, int low, int high, int (*compare)(void *, void *)){
     if(array == NULL){
-        fprintf(stderr, "quicksort -> NULL array\n");
+        fprintf(stderr, "high_quicksort -> NULL array\n");
         exit(EXIT_FAILURE);
     }     
     if(low < high){
@@ -41,7 +43,7 @@ void high_quicksort(void *array, unsigned long size, int low, int high, int (*co
     }
 }
 
-
+// LOW QUICKSORT
 
 static int low_partition(void *array, unsigned long  size, int low, int high, int (*compare)(void *, void *)){
     int j, i;
@@ -49,8 +51,8 @@ static int low_partition(void *array, unsigned long  size, int low, int high, in
     void *pivot = pt + ((unsigned long)low * size);       /* pivot is always the first element in the array*/
     i = high;                                /* i and j determine where the swap is gonna happen*/
     for(j = high; j > low; j--){            // se j > pivot devo i--                                     
-        if((*compare)(((char*)array + ((unsigned long)j * size)), (void*) pivot) > 0){               // compare se j <= pivot return 1     
-            swap((char*)array + ((unsigned long)i * size), (char*)array + ((unsigned long)j * size), size);     /* swap when I find an element (pos j) < pivot, so elements less than pivot are on left*/
+        if((*compare)((pt + ((unsigned long)j * size)), (void*) pivot) > 0){               // compare se j <= pivot return 1     
+            swap(pt + ((unsigned long)i * size), pt + ((unsigned long)j * size), size);     /* swap when I find an element (pos j) < pivot, so elements less than pivot are on left*/
             i--;                    /* increment because I have to find the right pivot position*/                                                                          
         }
     }
@@ -60,7 +62,7 @@ static int low_partition(void *array, unsigned long  size, int low, int high, in
 
 void low_quicksort(void *array, unsigned long size, int low, int high, int (*compare)(void *, void *)){
     if(array == NULL){
-        fprintf(stderr, "quicksort -> NULL array\n");
+        fprintf(stderr, "low_quicksort -> NULL array\n");
         exit(EXIT_FAILURE);
     }     
     if(low < high){
