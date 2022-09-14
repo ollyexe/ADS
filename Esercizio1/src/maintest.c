@@ -148,7 +148,7 @@ int main (/*int argc, char **argv*/){
 
 
     /*  TESTING HIGH QUICKSORT  */  /* EVERYTHING OK */
-
+/*
     int a[] = {0, 12, 3, 5, 1, 6, 23, 97, 46, 8};
     puts("Print before quicksort...");
     print_array(a);
@@ -183,7 +183,7 @@ int main (/*int argc, char **argv*/){
     high_quicksort(e, sizeof(int), 0, 9, int_cmp); // capacity - 1
     puts("Print after quicksort...");
     print_array(e);
-
+*/
 
     /*  TESTING LOW QUICKSORT   */  /* EVERYTHING OK */
 /*
@@ -223,29 +223,43 @@ int main (/*int argc, char **argv*/){
     print_array(e);
 */
 
+    // BINARY INSERTION SORT
+
+    
+    int a[] = {0, 12, 3, 5, 1, 6, 23, 97, 46, 8};
+    //puts("Print before binary_insertion_sort...");
+    //print_array(a);
+    binary_insertion_sort(a, sizeof(int), 10, int_cmp);
+    puts("Print after binary_insertion_sort...");
+    print_array(a);
+
+    int b[] = {15, 29, 2, 23, 97, 46, 8, 4, 11};
+    //puts("Print before binary_insertion_sort...");
+    //print_array(b);
+    binary_insertion_sort(b, sizeof(int), 10, int_cmp);
+    puts("Print after binary_insertion_sort...");
+    print_array(b);
+
+    int c[] = {12, 23, 97, 46, 8, 2, 9, 3, 4};
+    //puts("Print before binary_insertion_sort...");
+    //print_array(c);
+    binary_insertion_sort(c, sizeof(int), 10, int_cmp);
+    puts("Print after binary_insertion_sort...");
+    print_array(c);
+
+    int d[] = {12, 2, 9, 3, 23, 97, 46, 8, 12};
+    //puts("Print before binary_insertion_sort...");
+    //print_array(d);
+    binary_insertion_sort(d, sizeof(int), 10, int_cmp);
+    puts("Print after binary_insertion_sort...");
+    print_array(d);
+
+    int e[5];
+    //puts("Print before binary_insertion_sort...");
+    //print_array(e);
+    binary_insertion_sort(e, sizeof(int), 10, int_cmp);
+    puts("Print after binary_insertion_sort...");
+    print_array(e);
+
     exit(EXIT_SUCCESS);
 }
-/*
-CC = gcc 
-CFLAGS = -g -O2 -Wall -Wextra -Wpedantic -Wconversion
-RUN = ./bin/maintest
-
-all: bin/maintest
-
-bin/maintest: build/library.o build/maintest.o
-	$(CC) $(CFLAGS) -o bin/maintest build/maintest.o build/library.o
-	mv maintest bin
-	
-build/library.o: src/library.c src/library.h
-	$(CC) $(CFLAGS) -c src/library.c
-	mv library.o build
-
-build/maintest.o: src/maintest.c src/library.h
-	$(CC) $(CFLAGS) -c src/maintest.c
-	mv maintest.o build
-run:
-	$(RUN)
-	
-clean:
-	rm -f bin/maintest build/library.o build/maintest.o
-    */

@@ -71,3 +71,44 @@ void low_quicksort(void *array, unsigned long size, int low, int high, int (*com
         low_quicksort(array, size, pivot + 1, high, compare);
     }
 }
+
+// - - - - - - - - - - - - - BINARY INSERTION SORT - - - - - - - - - - -
+
+
+/* 
+for i = 1; i < length(A) - 1; i++
+    j = i
+    while j > 0 && A[j-1] > A[j]
+        swap j , j - 1
+*/
+
+static int binary_search(void *array, void *selected, int low, int high, unsigned long size, int (*compare)(void *, void *)){
+    char *pt = (char*) array;
+    if(high <= low) return (compare(selected, (pt + low*(int)size)) > 0) ? low+1 : low;
+    int mid = (low+high)/2;
+    if(compare(selected, pt + mid*(int)size) == 0) return mid+1;
+    if(compare(selected, pt + mid*(int)size) > 0)
+        return binary_search(array, selected, mid+1, high, size, compare);
+    return binary_search(array, selected, low, mid-1, size, compare);
+}
+
+void binary_insertion_sort(void *array, unsigned long size, unsigned long capacity, int (*compare)(void *, void *)){
+    if(array == NULL){
+        fprintf(stderr, "binary_insertion_sort -> array NULL");
+        exit(EXIT_FAILURE);
+    }
+    char *pt = (char *)array;
+
+    for(int i = 1; i < (int)capacity; i++){
+        int j = i - 1;
+        void *selected = malloc(size);
+        memcpy(selected, pt + (i * (int)size), size);
+        int loc = binary_search(array, selected, 0, j, size, compare);  // return indice
+        while(j >= loc){
+            memcpy(pt + ((j+1)*(int)size), pt + (j * (int)size), size);
+            j--;
+        }
+        memcpy(pt + ((j+1)*(int)size), selected, size);
+        free(selected);
+    }
+}
