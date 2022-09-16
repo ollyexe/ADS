@@ -82,7 +82,7 @@ static Record* load_file(FILE *fp, unsigned long *cap){
     
     printf("Loading file...\n");
     fflush(stdout);
-    for(i = 0; fgets(buffer, BUFFER_SIZE, fp) != NULL && i < 100; i++){
+    for(i = 0; fgets(buffer, BUFFER_SIZE, fp) != NULL && i < 10; i++){
         // alloca memoria
         char *riga = malloc(sizeof(char*)*(strlen(buffer)+1));
         // controllo se memoria è allocata
@@ -155,12 +155,12 @@ int main (int argc, char **argv){
 
     unsigned long int capacity = INIT_SIZE;
 
-    if(argc < 1){
+    if(argc < 2){
         fprintf(stderr, "Main -> argc error\n");
         exit(EXIT_FAILURE);
     }
     
-    FILE *fp = fopen(argv[1], "r");
+    FILE *fp = fopen(argv[0], "r");
     if(fp == NULL){
         fprintf(stderr, "MAIN -> Error opening file...");
         exit(EXIT_FAILURE);
@@ -176,8 +176,23 @@ int main (int argc, char **argv){
         exit(EXIT_FAILURE);
     }
 
-    binary_insertion_sort(csv, sizeof(Record), capacity, str_cmp);
-    print_rec(csv, capacity);
+    if (argv[1] == 'b'){
+        high_quicksort(csv, sizeof(Record), 0, (int)capacity-1, int_cmp);
+        print_rec(csv, capacity);
+        high_quicksort(csv, sizeof(Record), 0, (int)capacity-1, dbl_cmp);
+        print_rec(csv, capacity);
+        high_quicksort(csv, sizeof(Record), 0, (int)capacity-1, str_cmp);
+        print_rec(csv, capacity);
+    }else if( argv[1] == 'q'){
+        binary_insertion_sort(csv, sizeof(Record), capacity, int_cmp);
+        print_rec(csv, capacity);
+        binary_insertion_sort(csv, sizeof(Record), capacity, dbl_cmp);
+        print_rec(csv, capacity);
+        binary_insertion_sort(csv, sizeof(Record), capacity, str_cmp);
+        print_rec(csv, capacity);
+        
+    }
+
     free_file(csv, capacity);
     fclose(fp);
     printf("execution ended\n");
