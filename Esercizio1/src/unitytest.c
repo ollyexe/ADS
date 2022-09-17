@@ -14,10 +14,10 @@ typedef struct _Record {
 static int int_cmp(void *r1, void *r2){
     Record *id1 = (Record *) r1;
     Record *id2 = (Record *) r2;
-    /*if(id1->int_rec < 0 || id2->int_rec < 0){
+    if(id1->int_rec < 0 || id2->int_rec < 0){
         fprintf(stderr, "int_cmp -> int NULL\n");
         exit(EXIT_FAILURE);
-    }else */if(id1->int_rec < id2->int_rec)
+    }else if(id1->int_rec < id2->int_rec)
         return -1;
     else if(id1->int_rec == id2->int_rec)
         return 0;
@@ -28,10 +28,10 @@ static int int_cmp(void *r1, void *r2){
 static int dbl_cmp(void *r1, void *r2){
     Record *id1 = (Record *)r1;
     Record *id2 = (Record *)r2;
-    /*if(id1->doub_rec < 0 || id2->doub_rec < 0){
+    if(id1->doub_rec < 0 || id2->doub_rec < 0){
         fprintf(stderr, "dbl_cmp -> double NULL\n");
         exit(EXIT_FAILURE);
-    }*/
+    }
     if(id1->doub_rec < id2->doub_rec)
         return -1;
     else if(id1->doub_rec == id2->doub_rec)
@@ -43,17 +43,17 @@ static int dbl_cmp(void *r1, void *r2){
 static int str_cmp(void *r1, void *r2){
     Record *id1 = (Record *)r1;
     Record *id2 = (Record *)r2;
-    /*if(id1->str_rec == NULL || id2->str_rec == NULL){
+    if(id1->str_rec == NULL || id2->str_rec == NULL){
         fprintf(stderr, "str_cmp -> string is NULL\n");
         exit(EXIT_FAILURE);
-    }*/
+    }
     return strcmp(id1->str_rec, id2->str_rec);  // return 0 if equal --- return -1 if str1 < str2 --- return 1 if str1 > str2
 }
 
 // - - - - - - - - - - - - - - - - - NULL TEST - - - - - - - - - - - - - - - - - - -
 
 // QUICK SORT
-
+/*
 static void null_quicksort_int_test(void){
     Record *a = NULL;
     high_quicksort((void*)a, sizeof(Record), 0, 0, int_cmp);
@@ -83,11 +83,11 @@ static void null_binsertion_str_test(void){
     Record *a = NULL;
     binary_insertion_sort((void *)a, sizeof(Record), 0, str_cmp);
 }
-
+*/
 // - - - - - - - - - - - - - - - - - EMPTY TEST - - - - - - - - - - - - - -
 
 // QUICK SORT
-
+/*
 static void empty_quicksort_int_test(void){
     Record a[2];
 
@@ -100,7 +100,7 @@ static void empty_quicksort_int_test(void){
     a[1].int_rec = -1;
     a[1].doub_rec = -1.5;
 
-    high_quicksort((void*)&a, sizeof(Record), 0, sizeof(a)/(sizeof(Record)), int_cmp);
+    high_quicksort((void*)&a, sizeof(Record), 0, (sizeof(a)/(sizeof(Record)))-1, int_cmp);
 }
 static void empty_quicksort_dbl_test(void){
     Record a[2];
@@ -114,7 +114,7 @@ static void empty_quicksort_dbl_test(void){
     a[1].int_rec = -1;
     a[1].doub_rec = -1.5;
 
-    high_quicksort((void*)a, sizeof(Record), 0, sizeof(a)/(sizeof(Record)), dbl_cmp);
+    high_quicksort((void*)a, sizeof(Record), 0, (sizeof(a)/(sizeof(Record)))-1, dbl_cmp);
 }
 static void empty_quicksort_str_test(void){
     Record a[2];
@@ -128,7 +128,7 @@ static void empty_quicksort_str_test(void){
     a[1].int_rec = -1;
     a[1].doub_rec = -1.5;
 
-    high_quicksort((void*)a, sizeof(Record), 0, sizeof(a)/(sizeof(Record)), str_cmp);
+    high_quicksort((void*)a, sizeof(Record), 0, (sizeof(a)/(sizeof(Record)))-1, str_cmp);
 }
 
 // BINARY INSERTION SORT
@@ -176,6 +176,11 @@ static void empty_binsertion_str_test(void){
 
     binary_insertion_sort((void*)a, sizeof(Record), sizeof(a)/(sizeof(Record)), str_cmp);
 }
+*/
+
+// - - - - - - - - - - - - FULL TEST - - - - - - - - - - -
+
+// QUICKSORT
 
 static void full_quicksort_test(void){
     Record a[3];
@@ -207,15 +212,17 @@ static void full_quicksort_test(void){
     b[2].int_rec = 540;
     b[2].doub_rec = 129.4;
 
-    high_quicksort((void*)&a, sizeof(Record), 0, sizeof(a)/(sizeof(Record)), int_cmp);
+    high_quicksort((void*)&a, sizeof(Record), 0, (sizeof(a)/(sizeof(Record)))-1, int_cmp);
     for(long i = 0; i < (int)(sizeof(a)/(sizeof(Record))); i++) assert(a[i].int_rec == b[i].int_rec);
     
-    high_quicksort((void*)&a, sizeof(Record), 0, sizeof(a)/(sizeof(Record)), dbl_cmp);
+    high_quicksort((void*)&a, sizeof(Record), 0, (sizeof(a)/(sizeof(Record)))-1, dbl_cmp);
     for(long i = 0; i < (int)(sizeof(a)/(sizeof(Record))); i++) assert(a[i].doub_rec == b[i].doub_rec);
 
-    high_quicksort((void*)&a, sizeof(Record), 0, sizeof(a)/(sizeof(Record)), str_cmp);
+    high_quicksort((void*)&a, sizeof(Record), 0, (sizeof(a)/(sizeof(Record)))-1, str_cmp);
     for(long i = 0; i < (int)(sizeof(a)/(sizeof(Record))); i++) assert(a[i].str_rec == b[i].str_rec);
 }
+
+// BINARY INSERTION SORT
 
 static void full_binsertion_test(void){
    Record a[3];
@@ -259,7 +266,7 @@ static void full_binsertion_test(void){
 
 int main(){
     // NULL RECORD
-
+/*
     null_quicksort_int_test();
     null_quicksort_dbl_test();
     null_quicksort_str_test();
@@ -277,7 +284,7 @@ int main(){
     empty_binsertion_int_test();
     empty_binsertion_dbl_test();
     empty_binsertion_str_test();
-
+*/
     // FULL RECORD 
     
     full_quicksort_test();

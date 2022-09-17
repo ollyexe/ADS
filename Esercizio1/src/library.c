@@ -32,10 +32,10 @@ static int high_partition(void *array, unsigned long  size, int low, int high, i
     return i;
 }
 void high_quicksort(void *array, unsigned long size, int low, int high, int (*compare)(void *, void *)){
-    /*if(array == NULL){
+    if(array == NULL){
         fprintf(stderr, "high_quicksort -> NULL array\n");
         exit(EXIT_FAILURE);
-    }*/     
+    }    
     if(low < high){
         int pivot = high_partition(array, size, low, high, compare); 
         high_quicksort(array, size, low, pivot - 1, compare);
@@ -74,7 +74,6 @@ void low_quicksort(void *array, unsigned long size, int low, int high, int (*com
 
 // - - - - - - - - - - - - - BINARY INSERTION SORT - - - - - - - - - - -
 
-
 /* 
 for i = 1; i < length(A) - 1; i++
     j = i
@@ -93,10 +92,10 @@ static int binary_search(void *array, void *selected, int low, int high, unsigne
 }
 
 void binary_insertion_sort(void *array, unsigned long size, unsigned long capacity, int (*compare)(void *, void *)){
-    /*if(array == NULL){
+    if(array == NULL){
         fprintf(stderr, "binary_insertion_sort -> array NULL");
         exit(EXIT_FAILURE);
-    }*/
+    }
     char *pt = (char *)array;
 
     for(int i = 1; i < (int)capacity; i++){

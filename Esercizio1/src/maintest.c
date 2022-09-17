@@ -65,6 +65,7 @@ static void print_rec(Record *r, unsigned long capacity){
     for(long unsigned int i = 0; i < capacity; i++){
         printf("%10d, %15s, %15d, %16.8f\n", r[i].id_rec, r[i].str_rec, r[i].int_rec, r[i].doub_rec);
     }
+    printf("\n");
 }
 
 static Record* load_file(FILE *fp, unsigned long *cap){
@@ -160,7 +161,7 @@ int main (int argc, char **argv){
         exit(EXIT_FAILURE);
     }
     
-    FILE *fp = fopen(argv[0], "r");
+    FILE *fp = fopen(argv[1], "r");
     if(fp == NULL){
         fprintf(stderr, "MAIN -> Error opening file...");
         exit(EXIT_FAILURE);
@@ -176,16 +177,16 @@ int main (int argc, char **argv){
         exit(EXIT_FAILURE);
     }
 
-    if (argv[1] == 'b'){
+    if (strcmp(argv[2], "qui") == 0){
         high_quicksort(csv, sizeof(Record), 0, (int)capacity-1, int_cmp);
         print_rec(csv, capacity);
         high_quicksort(csv, sizeof(Record), 0, (int)capacity-1, dbl_cmp);
         print_rec(csv, capacity);
         high_quicksort(csv, sizeof(Record), 0, (int)capacity-1, str_cmp);
         print_rec(csv, capacity);
-    }else if( argv[1] == 'q'){
+    }else if(strcmp(argv[2], "bin") == 0){
         binary_insertion_sort(csv, sizeof(Record), capacity, int_cmp);
-        print_rec(csv, capacity);
+        print_rec(csv, capacity); 
         binary_insertion_sort(csv, sizeof(Record), capacity, dbl_cmp);
         print_rec(csv, capacity);
         binary_insertion_sort(csv, sizeof(Record), capacity, str_cmp);

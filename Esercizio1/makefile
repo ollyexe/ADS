@@ -27,6 +27,12 @@ build/unitytest.o: src/unitytest.c src/library.h
 run:
 	$(RUN) records.csv
 
+runq:
+	$(RUN) records.csv qui
+
+runb:
+	$(RUN) records.csv bin
+
 test:
 	$(TST) 
 	
