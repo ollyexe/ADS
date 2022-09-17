@@ -18,6 +18,7 @@ typedef struct _Record {
 
 // - - - - - - - - - - - - - - COMPARE FUNCTIONS - - - - - - - - - - -
 
+/* compare function that compare two int elements */
 
 static int int_cmp(void *r1, void *r2){
     Record *id1 = (Record *) r1;
@@ -34,6 +35,8 @@ static int int_cmp(void *r1, void *r2){
         return 1;
 }
 
+/* compare function that compare two double elements */
+
 static int dbl_cmp(void *r1, void *r2){
     Record *id1 = (Record *)r1;
     Record *id2 = (Record *)r2;
@@ -49,6 +52,8 @@ static int dbl_cmp(void *r1, void *r2){
         return 1;
 }
 
+/* compare function that compare two string elements */
+
 static int str_cmp(void *r1, void *r2){
     Record *id1 = (Record *)r1;
     Record *id2 = (Record *)r2;
@@ -61,17 +66,23 @@ static int str_cmp(void *r1, void *r2){
 
 // - - - - - - - - - - - - - - CSV MANAGING - - - - - - - - - - - -
 
+/* funtion that print on stdout the entire record */
+/*
 static void print_rec(Record *r, unsigned long capacity){
     for(long unsigned int i = 0; i < capacity; i++){
         printf("%10d, %15s, %15d, %16.8f\n", r[i].id_rec, r[i].str_rec, r[i].int_rec, r[i].doub_rec);
     }
     printf("\n");
 }
+*/
+/* function that load the csv file's content on the Record structure */
 
 static Record* load_file(FILE *fp, unsigned long *cap){
     long unsigned int i;
     char buffer[BUFFER_SIZE];
     unsigned long capacity = *cap;
+
+    /* initial memory allocation */
 
     Record *csv = (Record*)malloc(sizeof(Record) * capacity);
     if(csv == NULL){
@@ -83,28 +94,31 @@ static Record* load_file(FILE *fp, unsigned long *cap){
     
     printf("Loading file...\n");
     fflush(stdout);
-    for(i = 0; fgets(buffer, BUFFER_SIZE, fp) != NULL && i < 10; i++){
-        // alloca memoria
+    for(i = 0; fgets(buffer, BUFFER_SIZE, fp) != NULL; i++){
+        /* memory record allocation */
         char *riga = malloc(sizeof(char*)*(strlen(buffer)+1));
-        // controllo se memoria è allocata
+        /*allocated memory existance check*/
         if(riga == NULL){
             fprintf(stderr, "LOAD_FILE -> riga NULL\n");
             exit(EXIT_FAILURE);
         }
         
-    // tokenizzo la riga
-        strcpy(riga, buffer); // dest -> src copio riga nel buffer
+    /* row parsing and breaking on diferent type elements */
+
+        strcpy(riga, buffer); // dest -> src copy riga in buffer
         char* tmp_id = strtok(riga, ",");
         char* tmp_str = strtok(NULL, ",");
         char* tmp_int = strtok(NULL, ",");
         char* tmp_dbl = strtok(NULL, ",");
+
+        /* managing string elements*/
 
     char* strcpyed = malloc((strlen(tmp_str)+1) * sizeof(char*));
     if(strcpyed == NULL){
             fprintf(stderr, "LOAD_FILE -> strcpyed NULL\n");
             exit(EXIT_FAILURE);
     }
-    // check se c'è abbastanza capienza nell'array e realloc
+    /* dynamic capacity managing */
         if(i == capacity){
             capacity *= 2;          // tengo aggiornata la capacity
             csv = realloc(csv, sizeof(Record) * capacity);
@@ -114,8 +128,7 @@ static Record* load_file(FILE *fp, unsigned long *cap){
             }
         }
         
-    
-        // inserisco i valori nel record
+        /* inserting effectively elements into record */
         
         csv[i].id_rec = atoi(tmp_id);
         strcpy(strcpyed, tmp_str);
@@ -128,9 +141,11 @@ static Record* load_file(FILE *fp, unsigned long *cap){
             printf(".");
             fflush(stdout);
         }
+
         free(riga);
     }
-    *cap = i;
+
+    *cap = i;   /* capacity updating for extern functions */
     printf("File correctly loaded\n");
     
     clock_t endtime = clock();
@@ -139,6 +154,8 @@ static Record* load_file(FILE *fp, unsigned long *cap){
     
     return csv;
 }
+
+/* function used to deallocate memory */
 
 static void free_file(Record *csv, unsigned long capacity){
     unsigned long i;
@@ -179,19 +196,20 @@ int main (int argc, char **argv){
 
     if (strcmp(argv[2], "qui") == 0){
         high_quicksort(csv, sizeof(Record), 0, (int)capacity-1, int_cmp);
-        print_rec(csv, capacity);
+        //print_rec(csv, capacity);
         high_quicksort(csv, sizeof(Record), 0, (int)capacity-1, dbl_cmp);
-        print_rec(csv, capacity);
+        //print_rec(csv, capacity);
         high_quicksort(csv, sizeof(Record), 0, (int)capacity-1, str_cmp);
-        print_rec(csv, capacity);
+        //print_rec(csv, capacity);
+        printf("csv oredered on each field with quicksort!\n");
     }else if(strcmp(argv[2], "bin") == 0){
         binary_insertion_sort(csv, sizeof(Record), capacity, int_cmp);
-        print_rec(csv, capacity); 
+        //print_rec(csv, capacity); 
         binary_insertion_sort(csv, sizeof(Record), capacity, dbl_cmp);
-        print_rec(csv, capacity);
+        //print_rec(csv, capacity);
         binary_insertion_sort(csv, sizeof(Record), capacity, str_cmp);
-        print_rec(csv, capacity);
-        
+        //print_rec(csv, capacity);
+        printf("csv oredered on each field with binary insertion sort!\n");
     }
 
     free_file(csv, capacity);
