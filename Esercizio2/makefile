@@ -25,13 +25,7 @@ build/unitytest.o: src/unitytest.c src/library.h
 	mv unitytest.o build
 
 run:
-	$(RUN) records.csv
-
-runq:
-	$(RUN) records.csv qui
-
-runb:
-	$(RUN) records.csv bin
+	$(RUN) dictionary.txt correctme.txt
 
 test:
 	$(TST) 

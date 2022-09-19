@@ -1,3 +1,5 @@
+#ifndef LIBRARY_H_cwicnalsicnileaa
+#define LIBRARY_H_cwicnalsicnileaa
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,3 +18,4 @@ SkipList* createSkipList(int(*compare)(void*, void*));
 
 void freeNode(Node* n);
 void freeSkipList(SkipList *list);
+#endif /* LIBRARY_H_cwicnalsicnileaa */
