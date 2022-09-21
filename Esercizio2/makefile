@@ -34,4 +34,4 @@ clean:
 	rm -f bin/maintest build/library.o build/maintest.o build/unitytest.o bin/unitytest
 
 val:
-	valgrind --leak-check=full -s --show-leak-kinds=all --track-origins=yes --log-file=valgrind.log bin/maintest records.csv
+	valgrind --leak-check=full -s --show-leak-kinds=all --track-origins=yes --log-file=valgrind.log bin/maintest dictionary.txt correctme.txt

@@ -30,7 +30,8 @@ Node* createNode(void *I, unsigned int lvl){
 }
 
 SkipList* createSkipList(int(*compare)(void*, void*)){
-    SkipList* list = malloc(sizeof(SkipList));
+    SkipList* list = (SkipList*)malloc(sizeof(SkipList));
+    list->head =(Node*)malloc(sizeof(Node));
     list->head = createNode(NULL,MAX_HEIGHT);
     list->max_level = 1;
     list->compare = compare;
@@ -48,9 +49,9 @@ void insertSkipList(SkipList * list, void * I){
 
     x = list->head;
     
-    for(unsigned int k = list->max_level; k >= 1; k--){   // k down to 1
+    for(int k = (int)(list->max_level-1); k >= 0; k--){   // k down to 1
         if (x->next[k] == NULL || (list->compare(I, x->next[k]->item) < 0)){ // (I < x->next[k]->item) return -1
-            if (k < new->size) {
+            if (k < (int)new->size) {
               new->next[k] = x->next[k];
               x->next[k] = new;
             }
@@ -61,30 +62,29 @@ void insertSkipList(SkipList * list, void * I){
     }
 }
 
-void* searchSkipList(SkipList *list, void *I){
-    unsigned int i;
+int searchSkipList(SkipList *list, void *I){
+    int i;
     Node* x;
     x = list->head;
     if(list == NULL || I == NULL){
         fprintf(stderr, "searchSkiplist -> argument NULL");
     }
     // loop invariant: x->item < I
-    for (i = list->max_level; i >= 1 ;i--)
+    for (i = (int)(list->max_level-1); i >= 0 ;i--)
      {
-        while (list->compare(x->next[i]->item, I) < 0)   // x->next[i]->item < I 
+        while (x->next[i] != NULL && (list->compare(x->next[i]->item, I) < 0))   // x->next[i]->item < I 
        {
          x = x->next[i];
        }
     }
-    printf("i am here\n");
     // x->item < I <= x->next[1]->item
-    x = x->next[1];
+    x = x->next[0];
 
-    if(list->compare(x->item, I) == 0){ // x->item == I
-        return x->item;
+    if(x->next[i] != NULL && list->compare(x->item, I) == 0){ // x->item == I
+        return 0;       // return 0 if I found
     }
     else{
-        exit(EXIT_FAILURE);
+        return -1;
     }    
 }
 
