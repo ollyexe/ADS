@@ -3,7 +3,7 @@ CFLAGS = -g -O3 -Wall -Wextra -Wpedantic -Wconversion
 RUN = ./bin/maintest
 TST = ./bin/unitytest
 
-all: bin/maintest 
+all: bin/maintest
 
 bin/unitytest: build/library.o build/unitytest.o
 	$(CC) $(CFLAGS) -o $@ $^

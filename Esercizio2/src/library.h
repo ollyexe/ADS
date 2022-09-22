@@ -10,7 +10,7 @@
 typedef struct _SkipList SkipList;
 typedef struct _Node Node;
 
-void insertSkipList(SkipList * list, void * I);
+int insertSkipList(SkipList * list, void * I);
 int searchSkipList(SkipList * list, void* I);
 
 Node* createNode(void* I, unsigned int lvl);

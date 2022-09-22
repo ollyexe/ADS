@@ -38,9 +38,12 @@ SkipList* createSkipList(int(*compare)(void*, void*)){
     return list;
 }
 
-void insertSkipList(SkipList * list, void * I){
+int insertSkipList(SkipList * list, void * I){
     Node *new , *x; 
     new = createNode(I, randomLevel());
+    if(new == NULL){
+        return -1;
+    }
     if (new->size > list->max_level)
        { //se il numero di puntatori e maggiore di quello attuale della lista
         // la size del nodo diventa la piu grande della lista
@@ -60,6 +63,7 @@ void insertSkipList(SkipList * list, void * I){
             k++;
         }
     }
+    return 1;
 }
 
 int searchSkipList(SkipList *list, void *I){
