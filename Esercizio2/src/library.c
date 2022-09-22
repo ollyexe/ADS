@@ -1,13 +1,26 @@
 #include "library.h"
 
+/**
+ * @param head pointer at the first SkipList's Node
+ * @param max_level unsogned int max level the SkipList can archive
+ * @param compare pointer to a function which determines the precedence relation between the list elements.
+ * @authors Alessio Chimento  &  Oliviu Gratii
+ * */
 struct _SkipList {
   Node *head;
   unsigned int max_level;   
   int (*compare)(void*, void*);
 };
+
+/**
+ * @param next pointer at the next Node
+ * @param size random size level
+ * @param item pointer at the Node's element.
+ * @authors Alessio Chimento  &  Oliviu Gratii
+ * */
 struct _Node {
   Node **next;
-  unsigned int size;    //random level
+  unsigned int size;    
   void *item;
 };
 
@@ -52,7 +65,7 @@ int insertSkipList(SkipList * list, void * I){
 
     x = list->head;
     
-    for(int k = (int)(list->max_level-1); k >= 0; k--){   // k down to 1
+    for(int k = (int)(list->max_level-1); k >= 0; k--){   
         if (x->next[k] == NULL || (list->compare(I, x->next[k]->item) < 0)){ // (I < x->next[k]->item) return -1
             if (k < (int)new->size) {
               new->next[k] = x->next[k];
