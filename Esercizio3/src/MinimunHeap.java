@@ -20,6 +20,16 @@ public class MinimunHeap <T>{
 
     public void HeapInsert(T x) throws MinimusHeapException{
         if(x == null) throw new MinimusHeapException("x is null");
+
+        if(this.table.putIfAbsent(x, this.table.size()) != null)        // associa key a x e inserisce x in table.size position (se non esiste return null)
+            throw new MinimusHeapException("element already present");
+
+        this.array.add(x);
+
+        while((this.comparator).compare(this.HeapParent(x), x) > 0){
+            swap(HeapParent(x), x);
+        }
+        
     }
 
     // ok!
@@ -32,13 +42,13 @@ public class MinimunHeap <T>{
 
     public T HeapParent(T x) throws MinimusHeapException{  
         if(x == null) throw new MinimusHeapException("x is null");
-        if(!this.table.containsKey(x)) // method is used to check if a key is present in the Hashtable.
+        if(!this.table.containsKey(x)) // method is used to check if a key(x) is present in the Hashtable.
             return x;
         int i = this.table.get(x);
         if(i == 0){
             return x;
         }else{
-            return this.array.get(i/2);
+            return this.array.get(i/2); // get the element in i/2
         }  
     }
 
@@ -46,7 +56,7 @@ public class MinimunHeap <T>{
 
     public T HeapLeftSon(T x) throws MinimusHeapException{
         if(x == null) throw new MinimusHeapException("x is null");
-        if(!this.table.containsKey(x))
+        if(!this.table.containsKey(x))  
             return x;
         int i = this.table.get(x);
         if(2*i <= this.array.size()){
@@ -70,5 +80,79 @@ public class MinimunHeap <T>{
         }
     }
 
+    public void HeapExtract() throws MinimusHeapException{
+        if(this.array.isEmpty()) throw new MinimusHeapException("heap is empty");
+
+        swap(this.array.get(0), this.array.get(this.array.size() - 1));
+        
+        this.table.remove(this.array.size()-1);
+        this.array.remove(this.array.size()-1);
+
+        if(this.array.size() > 1)
+            heapfy(this.array.get(0));
+    }
+
+
+
+    public void HeapElDecrease(T x, T newx) throws MinimusHeapException {
+        if (x == null) throw new MinimusHeapException("element is null");
+        if (newx == null) throw new MinimusHeapException("amount is null");
+        if (!this.table.containsKey(x)) throw new MinimusHeapException("x isn't in the heap");
+
+        /*inizio sostituzione */  
+        Integer position  = this.table.get(x);
+        this.table.remove(x);
+        this.table.put(newx, position);
+        this.array.set(position, newx);
+        /*fine sostituzione */  
+
+        /*sposta l elemento riordinando tutto lo heap */
+        while ((this.comparator).compare(newx, HeapParent(newx)) < 0)
+            swap(newx, HeapParent(newx));
+        
+
+        if ((this.comparator).compare(newx, HeapParent(newx)) >= 0)
+            heapfy(newx);
+
+
+    }
+
+   
+
+    private void heapfy(T x) throws MinimusHeapException{
+        if(x == null) throw new MinimusHeapException("x is null");
+        T i = min(x, min(HeapLeftSon(x), HeapRightSon(x)));
+        if((this.comparator).compare(x, i) != 0){
+            swap(x, i);
+            heapfy(x);
+        }
+    }
+
+    private T min(T e1, T e2) throws MinimusHeapException{
+        if(e1 == null) throw new MinimusHeapException("e1 is null");
+        if(e2 == null) throw new MinimusHeapException("e2 is null");
+
+        return (((this.comparator).compare(e1, e2) < 0) ? e1 : e2);
+    }
+
+    private void swap(T e1, T e2) throws MinimusHeapException{
+        if(e1 == null) throw new MinimusHeapException("e1 is null");
+        if(e2 == null) throw new MinimusHeapException("e2 is null");
+
+        int int_e1 = this.table.get(e1);
+        int int_e2 = this.table.get(e2);
+
+        T tmp = this.array.get(int_e1); // e1 pos
+        
+        this.array.set(int_e1, e2);     // insert e2 element in e1 pos
+        this.table.put(e2, int_e1);     // put(key, value)
+
+        this.array.set(int_e2, tmp);
+        this.table.put(tmp, int_e2);
+    }
+
+    public String toString(){
+        return this.array.toString();
+    }
     
 }
