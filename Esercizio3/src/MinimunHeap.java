@@ -154,5 +154,9 @@ public class MinimunHeap <T>{
     public String toString(){
         return this.array.toString();
     }
+
+    public Object[] toArray(){
+        return array.toArray();
+    }
     
 }
