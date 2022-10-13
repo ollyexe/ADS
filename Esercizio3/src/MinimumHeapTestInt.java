@@ -138,7 +138,7 @@ public class MinimumHeapTestInt{
         assertArrayEquals(exObjects, aObjects);
     }
 
-    @Test(expected = MinimumHeapException.class)
+    @Test(expected = MinimusHeapException.class)
     public void testAddFourElDecreaseTwoToNull() throws MinimusHeapException{
         heapMin.HeapInsert(i1);
         heapMin.HeapInsert(i2);
