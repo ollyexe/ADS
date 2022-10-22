@@ -1,9 +1,9 @@
-public class Arco<T>{
-    private T etichetta = null;
+public class Arco<S>{
+    private S etichetta = null;
 
     private double peso= 0;
 
-    public Arco(T etichetta){ this.etichetta = etichetta;}
+    public Arco(S etichetta){ this.etichetta = etichetta;}
 
     public double getPeso() {
         return peso;
@@ -13,7 +13,7 @@ public class Arco<T>{
         this.peso = peso;
     }
 
-    public T getEtichetta() {
+    public S getEtichetta() {
         return etichetta;
     }
 
