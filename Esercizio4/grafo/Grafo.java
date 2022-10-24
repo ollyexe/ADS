@@ -93,19 +93,26 @@ public class Grafo<T, S>{
     }
 
     
-    public boolean arcoExist(S etichetta){// ????????????????????????
-        return getArchi().contains(etichetta);
+    public boolean arcoExist(T etichettaA,T etichettaB){// ????????????????????????
+        Vertice<T,S> verticeA = getVertice(etichettaA);
+        Vertice<T,S> verticeB = getVertice(etichettaB);
+        
+        return verticeA.hasAdiacente(etichettaB)||verticeB.hasAdiacente(etichettaA);
     }
     
-    public void arcoDelete(T vlabelA, T vlabelB){
+    public Arco<S> arcoDelete(T vlabelA, T vlabelB){
         
         Vertice<T,S> primoVertice = getVertice(vlabelA);
+
         Arco<S> arcoRimosso = primoVertice.removeArco(vlabelB);
+
         if(!isDiretto()){
             Vertice<T, S> secondoVertice = getVertice(vlabelB);
             Arco<S> arco2Rimosso = secondoVertice.removeArco(vlabelA);
-            
+            return arco2Rimosso; 
         }
+
+        return arcoRimosso;
     }
 
 
@@ -138,6 +145,11 @@ public class Grafo<T, S>{
         Vertice<T, S> v = getVertice(fvlabel); 
         return v.getArco(svlabel);
     }
-    
 
+
+    public S getArcoFromVertici(T etichettaA,T etichettaB){
+        return getArco(etichettaA, etichettaB).getEtichetta();
+    }
+    
+    
 }

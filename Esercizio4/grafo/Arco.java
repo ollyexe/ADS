@@ -1,6 +1,5 @@
 public class Arco<S>{
     private S etichetta = null;
-
     private double peso= 0;
 
     public Arco(S etichetta){ this.etichetta = etichetta;}
@@ -18,7 +17,7 @@ public class Arco<S>{
     }
 
     public String toString() {
-        return "" + this.peso;
+        return "" + this.etichetta.toString();
     }
 
 }

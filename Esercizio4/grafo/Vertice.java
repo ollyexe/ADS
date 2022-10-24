@@ -71,7 +71,12 @@ public class Vertice <T,S>{
     }
 
     public boolean hasAdiacente(T vLabel){
-        return adiacenti.contains(vLabel);
+        return adiacenti.containsKey(vLabel);
+    }
+
+    @Override
+    public String toString(  ){
+        return "" + this.etichetta.toString();
     }
 
 }
