@@ -1,4 +1,4 @@
-package Grafo;
+package grafo;
 public class Arco<S>{
     private S etichetta = null;
     private double peso= 0;

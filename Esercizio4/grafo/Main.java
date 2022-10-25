@@ -1,4 +1,4 @@
-package Grafo;
+package grafo;
 public class Main {
     public static void main(String[] args) {
          Grafo<Character, Integer> grafo = null;

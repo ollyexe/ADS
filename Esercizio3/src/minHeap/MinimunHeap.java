@@ -1,4 +1,4 @@
-//package library;
+package minHeap;//package library;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -11,7 +11,7 @@ public class MinimunHeap <T>{
     private Hashtable <T, Integer> table = null;        // use hash table so access to elements is faster 
                                                 // T element's type - Integer index
 
-    public MinimunHeap (Comparator <T> comparator) throws MinimusHeapException{ // create MinimunHeap O(1)
+    public MinimunHeap (Comparator <T> comparator) throws MinimusHeapException{ // create minHeap.MinimunHeap O(1)
         if(comparator == null) throw new MinimusHeapException("comparator null");
         this.comparator = comparator;
         this.array = new ArrayList<>();
@@ -80,16 +80,18 @@ public class MinimunHeap <T>{
         }
     }
 
-    public void HeapExtract() throws MinimusHeapException{
+    public T HeapExtract() throws MinimusHeapException{
         if(this.array.isEmpty()) throw new MinimusHeapException("heap is empty");
 
         swap(this.array.get(0), this.array.get(this.array.size() - 1));
         
         this.table.remove(this.array.size()-1);
-        this.array.remove(this.array.size()-1);
+        T a = this.array.remove(this.array.size()-1);
 
         if(this.array.size() > 1)
             heapfy(this.array.get(0));
+
+        return a;
     }
 
 

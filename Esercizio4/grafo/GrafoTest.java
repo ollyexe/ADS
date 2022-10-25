@@ -1,4 +1,4 @@
-package Grafo;
+package grafo;
 
 import java.util.ArrayList;
 import java.util.Comparator;

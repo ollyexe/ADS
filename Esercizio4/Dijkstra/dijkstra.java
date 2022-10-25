@@ -5,10 +5,11 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import Grafo.Grafo;
-import Grafo.Vertice;
-import Grafo.Arco;
-import minimunHeap.*;
+import grafo.Grafo;
+import grafo.Vertice;
+import grafo.Arco;
+import minHeap.MinimunHeap;
+import minHeap.MinimusHeapException;
 
 
 public class dijkstra{
