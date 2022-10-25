@@ -1,3 +1,5 @@
+package Grafo;
+
 import java.util.Hashtable;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,9 +27,9 @@ public class Grafo<T, S>{
         return vertici.size();
     }
 
-    public void addVertice(T vetichetta){
+    public boolean addVertice(T vetichetta){
         Vertice<T, S> v = new Vertice<>(vetichetta);
-        vertici.putIfAbsent(vetichetta,v);
+        return (vertici.putIfAbsent(vetichetta,v) == null);
     }
     
     public boolean verticeExist(T etichetta){

@@ -1,3 +1,4 @@
+package Grafo;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -8,7 +9,26 @@ public class Vertice <T,S>{
 
     private T etichetta = null;
     private Hashtable<T,Arco<S>> adiacenti = null;
+    private double distance = 0;
+    private Vertice<T, S> p = null;
 
+
+    public void setP(Vertice<T,S> p ){
+        this.p = p;
+    }
+
+    public Vertice<T,S> getP (){
+        return this.p;
+    }
+
+    public double getDistance(){
+        return this.distance;
+    }
+
+    
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
 
     public T getEtichetta(){
         return this.etichetta;
