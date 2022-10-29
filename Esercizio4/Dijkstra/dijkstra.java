@@ -24,7 +24,7 @@ public class dijkstra{
         visited.add(start);
 
         while(minheap.HeapSize() != 0){
-            Vertice<T, S> next = minheap.HeapExtract();; // extract vertex with min distance
+            Vertice<T, S> next = minheap.HeapRemove(); // extract vertex with min distance
             visited.add(next);      // add next at visited vertex
             
             for(Vertice<T, S> vis : grafo.getVerticiAdiacenti(next.getEtichetta()))  // for each vertex v which is agjacent of next

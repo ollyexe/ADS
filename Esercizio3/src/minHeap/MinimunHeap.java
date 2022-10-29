@@ -1,4 +1,4 @@
-package minHeap;//package library;
+package minHeap;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -26,8 +26,8 @@ public class MinimunHeap <T>{
 
         this.array.add(x);
 
-        while((this.comparator).compare(this.HeapParent(x), x) > 0){
-            swap(HeapParent(x), x);
+        while((this.comparator).compare(x , this.HeapParent(x)) < 0){
+            swap(x, HeapParent(x));
         }
         
     }
@@ -45,11 +45,13 @@ public class MinimunHeap <T>{
         if(!this.table.containsKey(x)) // method is used to check if a key(x) is present in the Hashtable.
             return x;
         int i = this.table.get(x);
-        if(i == 0){
+        if(i == 0) {
             return x;
-        }else{
-            return this.array.get(i/2); // get the element in i/2
-        }  
+        }
+        if(i % 2 == 0){
+            return this.array.get((i/2)-1);
+        }
+        return this.array.get(i / 2);
     }
 
     // ok!
@@ -59,10 +61,10 @@ public class MinimunHeap <T>{
         if(!this.table.containsKey(x))  
             return x;
         int i = this.table.get(x);
-        if(2*i <= this.array.size()){
-            return this.array.get(2*i);
+        if((2*i)+1 < this.array.size()){
+            return this.array.get((2*i) + 1);
         }else{
-            return this.array.get(i);
+            return x;
         }
     }
 
@@ -73,14 +75,14 @@ public class MinimunHeap <T>{
         if(!this.table.containsKey(x))
             return x;
         int i = this.table.get(x);  // get x position
-        if((2*i)+1 <= this.array.size()){
-            return this.array.get((2*i)+1);
+        if((2*i)+2 < this.array.size()){
+            return this.array.get((2*i)+2);
         }else{
-            return this.array.get(i);
+            return x;
         }
     }
 
-    public T HeapExtract() throws MinimusHeapException{
+    public T HeapRemove() throws MinimusHeapException{
         if(this.array.isEmpty()) throw new MinimusHeapException("heap is empty");
 
         swap(this.array.get(0), this.array.get(this.array.size() - 1));
@@ -103,6 +105,7 @@ public class MinimunHeap <T>{
 
         /*inizio sostituzione */  
         Integer position  = this.table.get(x);
+        System.out.println(position);
         this.table.remove(x);
         this.table.put(newx, position);
         this.array.set(position, newx);
@@ -115,8 +118,6 @@ public class MinimunHeap <T>{
 
         if ((this.comparator).compare(newx, HeapParent(newx)) >= 0)
             heapfy(newx);
-
-
     }
 
    
