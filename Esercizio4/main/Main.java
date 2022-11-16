@@ -1,5 +1,3 @@
-package grafo;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -11,17 +9,13 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.Set;
 
-import Dijkstra.dijkstra;
-import grafo.Arco;
-import grafo.Grafo;
-//import Grafo.GrafoException;
-import grafo.GrafoTipo;
-import grafo.Vertice;
+
 
 public class Main {
 
     private static void loadGrafo(String path, Grafo<String, String> grafo) throws IOException{
         Path inputPath = Paths.get(path);
+        System.out.println(inputPath.toAbsolutePath());
 
         System.out.println("Loading Data in Graph...");
 
@@ -55,19 +49,7 @@ public class Main {
         System.out.println("Data loaded!");
     }
 
-    public static void main(String [] args){
-        Grafo<String, String> grafo = new Grafo<>();
-        String csv = "Resources/Dataset/italian_dist_graph.csv";
-        try{
-            loadGrafo(csv, grafo);
-            String startLabel = "torino";
-            String endLabel = "catania";
-            Set<Vertice<String, String>> res = dijkstra.dijkstra(grafo, startLabel);
-            trovaDistanza(res, startLabel, endLabel);
-        }catch(Exception e){
-            e.printStackTrace(System.err);
-        }
-    }
+ 
 
     public static void trovaDistanza(Set<Vertice<String,String>> risultato,
                                      String srcEtichetta,String destEtichetta){
@@ -98,5 +80,25 @@ public class Main {
         int c = path_aux(v.getP());
         System.out.println(v.getEtichetta());
         return c + 1;
+    }
+
+    public static void main(String [] args){
+        //to run ant run -Dfile="italian_dist_graph.csv" -Dstart="torino" -Dend="catania"
+        //or if vanted from jar
+        // ant createjar
+        // cd build
+        // java -jar Main.jar "../italian_dist_graph.csv" "torino" "catania"
+        Grafo<String, String> grafo = new Grafo<>();
+
+        String csv = args[0];
+        try{
+            loadGrafo(csv, grafo);
+            String startLabel = args[1];
+            String endLabel = args[2];
+            Set<Vertice<String, String>> res = dijkstra.dijkstra(grafo, startLabel);
+            trovaDistanza(res, startLabel, endLabel);
+        }catch(Exception e){
+            e.printStackTrace(System.err);
+        }
     }
 }

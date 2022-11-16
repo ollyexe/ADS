@@ -1,8 +1,4 @@
-package minHeap;/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
@@ -10,6 +6,7 @@ import org.junit.runner.notification.Failure;
 
 public class MinimumHeapTestRunner {
   public static void main(String[] args) {
+    //to run ant clean test clean
     Result result = JUnitCore.runClasses(MinimumHeapTestInt.class);
     for (Failure failure : result.getFailures()) {
       System.out.println(failure.toString());
