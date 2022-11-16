@@ -1,4 +1,4 @@
-<project name="Dijkstra" basedir="." >
+<project name="MinHeap" basedir="." >
     <target name="init">
         <property name="project.name" value="${ant.project.name}" />
         <property location="classes" name="classes.dir" />

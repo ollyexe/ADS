@@ -1,10 +1,10 @@
-package lib.grafo;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
 public class GrafoTestRunner {
+    // to run : and test
     public static void main(String [] args) {
         Result result = JUnitCore.runClasses(GrafoTest.class);
         for (Failure failure : result.getFailures()) {

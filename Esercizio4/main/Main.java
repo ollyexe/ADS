@@ -9,12 +9,7 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.Set;
 
-import Dijkstra.dijkstra;
-import grafo.Arco;
-import grafo.Grafo;
-//import Grafo.GrafoException;
-import grafo.GrafoTipo;
-import grafo.Vertice;
+
 
 public class Main {
 
@@ -89,6 +84,10 @@ public class Main {
 
     public static void main(String [] args){
         //to run ant run -Dfile="italian_dist_graph.csv" -Dstart="torino" -Dend="catania"
+        //or if vanted from jar
+        // ant createjar
+        // cd build
+        // java -jar Main.jar "../italian_dist_graph.csv" "torino" "catania"
         Grafo<String, String> grafo = new Grafo<>();
 
         String csv = args[0];
