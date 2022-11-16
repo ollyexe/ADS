@@ -88,13 +88,14 @@ public class Main {
     }
 
     public static void main(String [] args){
+        //to run ant run -Dfile="italian_dist_graph.csv" -Dstart="torino" -Dend="catania"
         Grafo<String, String> grafo = new Grafo<>();
 
         String csv = args[0];
         try{
             loadGrafo(csv, grafo);
-            String startLabel = "torino";
-            String endLabel = "catania";
+            String startLabel = args[1];
+            String endLabel = args[2];
             Set<Vertice<String, String>> res = dijkstra.dijkstra(grafo, startLabel);
             trovaDistanza(res, startLabel, endLabel);
         }catch(Exception e){

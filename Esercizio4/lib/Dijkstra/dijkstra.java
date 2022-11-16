@@ -2,21 +2,19 @@ package Dijkstra;
 
 import java.util.Comparator;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import grafo.Grafo;
 import grafo.Vertice;
-import grafo.Arco;
-import minHeap.MinimunHeap;
-import minHeap.MinimusHeapException;
+import minHeap.MinimumHeap;
+import minHeap.MinimumHeapException;
 
 
 public class dijkstra{
     
-    public static <T, S> Set<Vertice<T, S>> dijkstra(Grafo<T, S> grafo, T startLabel) throws MinimusHeapException{
+    public static <T, S> Set<Vertice<T, S>> dijkstra(Grafo<T, S> grafo, T startLabel) throws MinimumHeapException {
         GenericComparator<T, S> comparator = new GenericComparator<>();
-        MinimunHeap<Vertice<T, S>> minheap = new MinimunHeap<>(comparator);
+        MinimumHeap<Vertice<T, S>> minheap = new MinimumHeap<>(comparator);
         Vertice<T, S> start = grafo.getVertice(startLabel);
         Set<Vertice<T, S>> visited = new HashSet<>();
 
@@ -33,7 +31,7 @@ public class dijkstra{
         return visited;
     }
 
-        private static <T, S> void relax(Vertice<T, S> u, Vertice<T, S> v, MinimunHeap<Vertice<T, S>> Q) throws MinimusHeapException{
+        private static <T, S> void relax(Vertice<T, S> u, Vertice<T, S> v, MinimumHeap<Vertice<T, S>> Q) throws MinimumHeapException {
             Double alt = u.getDistance() + u.getPeso(v.getEtichetta());
             if(v.getDistance() > alt && u.getDistance() != Double.POSITIVE_INFINITY){
                 Vertice<T, S> tmp = v;
@@ -47,7 +45,7 @@ public class dijkstra{
 
 
     //inizializza le distanze dal src a infinito e inizilizza la distanza del nodo di inizio a 0
-    public static <T,S> void init(Grafo<T,S> grafo , Vertice<T,S> src, MinimunHeap<Vertice<T,S>> Q) throws MinimusHeapException{
+    public static <T,S> void init(Grafo<T,S> grafo , Vertice<T,S> src, MinimumHeap<Vertice<T,S>> Q) throws MinimumHeapException {
         for (Vertice<T,S> v: grafo.getVerticiGrafo()) {
             if (!v.equals(src)) {
                 v.setDistance(Double.POSITIVE_INFINITY);

@@ -1,28 +1,28 @@
-package minHeap;
+
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Hashtable;
 
-public class MinimunHeap <T>{
+public class MinimumHeap<T>{
 
     private ArrayList <T> array = null;
     private Comparator <T> comparator = null;
     private Hashtable <T, Integer> table = null;        // use hash table so access to elements is faster 
                                                 // T element's type - Integer index
 
-    public MinimunHeap (Comparator <T> comparator) throws MinimusHeapException{ // create minHeap.MinimunHeap O(1)
-        if(comparator == null) throw new MinimusHeapException("comparator null");
+    public MinimumHeap(Comparator <T> comparator) throws MinimumHeapException { // create minHeap.MinimunHeap O(1)
+        if(comparator == null) throw new MinimumHeapException("comparator null");
         this.comparator = comparator;
         this.array = new ArrayList<>();
         this.table = new Hashtable<>();
     }
 
-    public void HeapInsert(T x) throws MinimusHeapException{
-        if(x == null) throw new MinimusHeapException("x is null");
+    public void HeapInsert(T x) throws MinimumHeapException {
+        if(x == null) throw new MinimumHeapException("x is null");
 
         if(this.table.putIfAbsent(x, this.table.size()) != null)        // associa key a x e inserisce x in table.size position (se non esiste return null)
-            throw new MinimusHeapException("element already present");
+            throw new MinimumHeapException("element already present");
 
         this.array.add(x);
 
@@ -40,8 +40,8 @@ public class MinimunHeap <T>{
 
     // ok!
 
-    public T HeapParent(T x) throws MinimusHeapException{  
-        if(x == null) throw new MinimusHeapException("x is null");
+    public T HeapParent(T x) throws MinimumHeapException {
+        if(x == null) throw new MinimumHeapException("x is null");
         if(!this.table.containsKey(x)) // method is used to check if a key(x) is present in the Hashtable.
             return x;
         int i = this.table.get(x);
@@ -56,8 +56,8 @@ public class MinimunHeap <T>{
 
     // ok!
 
-    public T HeapLeftSon(T x) throws MinimusHeapException{
-        if(x == null) throw new MinimusHeapException("x is null");
+    public T HeapLeftSon(T x) throws MinimumHeapException {
+        if(x == null) throw new MinimumHeapException("x is null");
         if(!this.table.containsKey(x))  
             return x;
         int i = this.table.get(x);
@@ -70,8 +70,8 @@ public class MinimunHeap <T>{
 
     // ok!
 
-    public T HeapRightSon(T x) throws MinimusHeapException{
-        if(x == null) throw new MinimusHeapException("x is null");
+    public T HeapRightSon(T x) throws MinimumHeapException {
+        if(x == null) throw new MinimumHeapException("x is null");
         if(!this.table.containsKey(x))
             return x;
         int i = this.table.get(x);  // get x position
@@ -82,8 +82,8 @@ public class MinimunHeap <T>{
         }
     }
 
-    public T HeapRemove() throws MinimusHeapException{
-        if(this.array.isEmpty()) throw new MinimusHeapException("heap is empty");
+    public T HeapRemove() throws MinimumHeapException {
+        if(this.array.isEmpty()) throw new MinimumHeapException("heap is empty");
 
         swap(this.array.get(0), this.array.get(this.array.size() - 1));
         
@@ -98,14 +98,13 @@ public class MinimunHeap <T>{
 
 
 
-    public void HeapElDecrease(T x, T newx) throws MinimusHeapException {
-        if (x == null) throw new MinimusHeapException("element is null");
-        if (newx == null) throw new MinimusHeapException("amount is null");
-        if (!this.table.containsKey(x)) throw new MinimusHeapException("x isn't in the heap");
+    public void HeapElDecrease(T x, T newx) throws MinimumHeapException {
+        if (x == null) throw new MinimumHeapException("element is null");
+        if (newx == null) throw new MinimumHeapException("amount is null");
+        if (!this.table.containsKey(x)) throw new MinimumHeapException("x isn't in the heap");
 
         /*inizio sostituzione */  
         Integer position  = this.table.get(x);
-        System.out.println(position);
         this.table.remove(x);
         this.table.put(newx, position);
         this.array.set(position, newx);
@@ -122,8 +121,8 @@ public class MinimunHeap <T>{
 
    
 
-    private void heapfy(T x) throws MinimusHeapException{
-        if(x == null) throw new MinimusHeapException("x is null");
+    private void heapfy(T x) throws MinimumHeapException {
+        if(x == null) throw new MinimumHeapException("x is null");
         T i = min(x, min(HeapLeftSon(x), HeapRightSon(x)));
         if((this.comparator).compare(x, i) != 0){
             swap(x, i);
@@ -131,16 +130,16 @@ public class MinimunHeap <T>{
         }
     }
 
-    private T min(T e1, T e2) throws MinimusHeapException{
-        if(e1 == null) throw new MinimusHeapException("e1 is null");
-        if(e2 == null) throw new MinimusHeapException("e2 is null");
+    private T min(T e1, T e2) throws MinimumHeapException {
+        if(e1 == null) throw new MinimumHeapException("e1 is null");
+        if(e2 == null) throw new MinimumHeapException("e2 is null");
 
         return (((this.comparator).compare(e1, e2) < 0) ? e1 : e2);
     }
 
-    private void swap(T e1, T e2) throws MinimusHeapException{
-        if(e1 == null) throw new MinimusHeapException("e1 is null");
-        if(e2 == null) throw new MinimusHeapException("e2 is null");
+    private void swap(T e1, T e2) throws MinimumHeapException {
+        if(e1 == null) throw new MinimumHeapException("e1 is null");
+        if(e2 == null) throw new MinimumHeapException("e2 is null");
 
         int int_e1 = this.table.get(e1);
         int int_e2 = this.table.get(e2);

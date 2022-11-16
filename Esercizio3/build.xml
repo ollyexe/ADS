@@ -1,0 +1,48 @@
+<project name="Dijkstra" basedir="." >
+    <target name="init">
+        <property name="project.name" value="${ant.project.name}" />
+        <property location="classes" name="classes.dir" />
+        <property location="build" name="build.dir" />
+        <property location="src/minHeap" name="minHeap.dir" />
+        <property location="classes/minHeap" name="minHeap_classes.dir"/>
+        <property location="../Java/JUnit" name="unit" />
+        <property location="../Java/JUnit/junit-4.12.jar" name="junit" />
+        <property location="../Java/JUnit/hamcrest-core-1.3.jar" name="hamcrest-core" />
+    </target>
+
+    <target depends="init" name="clean">
+        <delete dir="${classes.dir}"/>
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target depends="init" name="compile">
+        <mkdir dir="${classes.dir}" />
+        <javac destdir="${classes.dir}" srcdir="${minHeap.dir}" includeantruntime="false" encoding="iso-8859-1" >
+            <classpath>
+                <pathelement location="${junit}" />
+                <pathelement location="${hamcrest-core}" />
+            </classpath>
+        </javac>
+
+    </target>
+
+    <target depends="compile" name="junit">
+        <mkdir dir="build"/>
+        <jar destfile="build/MinimumHeapTestRunner.jar" basedir="${classes.dir}">
+            <zipgroupfileset dir="${unit}" includes="*.jar" excludes=""/>
+            <manifest>
+                <attribute name="Main-Class" value="MinimumHeapTestRunner"/>
+                <attribute name="Class-Path" value="${calsses.dir}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target depends="compile,junit" name="test">
+        <java jar="${build.dir}/MinimumHeapTestRunner.jar" fork="true">
+        </java>
+    </target>
+
+
+
+
+</project>

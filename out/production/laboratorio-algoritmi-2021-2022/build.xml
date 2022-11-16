@@ -1,36 +1,115 @@
-<project name="grafo" basedir="." default="all">
-    <property name="build.dir" location="build"/>
+<project name="Dijkstra" basedir="." >
+    <target name="init">
+        <property name="project.name" value="${ant.project.name}" />
+        <property location="classes" name="classes.dir" />
+        <property location="classes/grafo" name="graf_classes.dir" />
+        <property location="build" name="build.dir" />
+        <property location="lib/Dijkstra" name="dij_lib.dir" />
+        <property location="lib/grafo" name="grafo_lib.dir" />
+        <property location="..\Esercizio3\src\minHeap" name="minHeap.dir" />
+        <property location="main" name="main.dir" />
+        <property location="../Java/JUnit/junit-4.12.jar" name="junit" />
+        <property location="../Java/JUnit/hamcrest-core-1.3.jar" name="hamcrest-core" />
+        <property location="lib/grafo/test" name="grafo_test"/>
 
+    </target>
+
+    <target depends="init" name="clean">
+        <delete dir="${classes.dir}"/>
+        <delete dir="${build.dir}"/>
+    </target>
 
     <target depends="init" name="compile">
-        <mkdir dir="${classes.dir}"/>
-        <javac destdir="${classes.dir}" srcdir="${src.dir}" includeantruntime="false" encoding="iso-8859-1">
+        <mkdir dir="${classes.dir}" />
+        <javac destdir="${classes.dir}" srcdir="${minHeap.dir}" includeantruntime="false" encoding="iso-8859-1">
             <classpath>
-                <pathelement location="${junit}"/>
-                <pathelement location="${hamcrest-core}"/>
+                  <pathelement location="${junit}" />
+                  <pathelement location="${hamcrest-core}" />
+            </classpath>
+        </javac>
+        <javac destdir="${classes.dir}" srcdir="${grafo_lib.dir}" includeantruntime="false" encoding="iso-8859-1">
+            <classpath>
+                  <pathelement location="${junit}" />
+                  <pathelement location="${hamcrest-core}" />
+                  <pathelement location="${classes.dir}"/>
+            </classpath>
+        </javac>
+        <javac destdir="${classes.dir}" srcdir="${dij_lib.dir}" includeantruntime="false" encoding="iso-8859-1">
+            <classpath>
+                  <pathelement location="${junit}" />
+                  <pathelement location="${hamcrest-core}" />
+                  <pathelement location="${classes.dir}"/>
+            </classpath>
+        </javac>
+        <javac destdir="${classes.dir}" srcdir="${main.dir}" includeantruntime="false" encoding="iso-8859-1">
+            <classpath>
+                  <pathelement location="${junit}" />
+                  <pathelement location="${hamcrest-core}" />
+                  <pathelement location="${classes.dir}"/>
             </classpath>
         </javac>
     </target>
 
 
-    <target depends="compile" name="jar">
+    <target depends="compile" name="jarj">
         <mkdir dir="${build.dir}"/>
-        <jar destfile="build/Main.jar" basedir="${classes.dir}">
-            <manifest>
-                <attribute name="Main-Class" value="Main"/>
-            </manifest>
+
+        <jar destfile="build/Main.jar" basedir="">
+          <manifest>
+            <attribute name="Main-Class" value="Main"/>
+          </manifest>
         </jar>
     </target>
 
     <target depends="compile" name="junit">
         <mkdir dir="build"/>
-        <jar destfile="build/TestGraphMain.jar" basedir="${classes.dir}">
-            <zipgroupfileset dir="lib" includes="*.jar" excludes=""/>
-            <manifest>
-                <attribute name="Main-Class" value="TestGraphMain"/>
-                <attribute name="Class-Path" value="${classpath}"/>
-            </manifest>
+        <jar destfile="build/GarafoTestRunner.jar" basedir="${graf_classes.dir}">
+          <zipgroupfileset dir="lib/grafo" includes="*.jar" excludes=""/>
+          <manifest>
+            <attribute name="Main-Class" value="GrafoTestRunner"/>
+            <attribute name="Class-Path" value="${graf_classes}"/>
+          </manifest>
         </jar>
     </target>
+
+    
+
+    
+    
+    <target depends="compile" name="run">
+        <java classname="Main" fork="true">
+            <classpath>
+                <pathelement location="Main"/>
+                <pathelement path="classes"/>
+            </classpath>
+            <arg value="${file}"/>
+        </java>
+    </target>
+
+    <target depends="junit,compile" name="test">
+        <java classname="GrafoTestRunner" fork="true">
+            <classpath>
+                <pathelement location="GrafoTestRunner"/>
+                <pathelement path="classes"/>
+            </classpath>
+            <arg value="${file}"/>
+        </java>
+    </target>
+
+    <target depends="compile" name="jar">
+        <mkdir dir="${build.dir}"/>
+
+        <jar destfile="build/Main.jar" basedir="${classes.dir}">
+          <manifest>
+            <attribute name="Main-Class" value="Main"/>
+          </manifest>
+        </jar>
+    </target>
+
+    <target depends="compile,jar" name="runjar">
+        <java jar="${build.dir}/Main.jar" fork="false">
+        </java>
+    </target>
+
 
 </project>

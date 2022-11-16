@@ -1,4 +1,3 @@
-package minHeap;
 
 import java.util.Comparator;
  
@@ -15,10 +14,10 @@ public class MinimumHeapTestInt{
     }
 
     private Integer i1, i2, i3, i4, i5, i6, i7;
-    private MinimunHeap<Integer> heapMin;
+    private MinimumHeap<Integer> heapMin;
 
     @Before
-    public void createMinimumHeap() throws MinimusHeapException{
+    public void createMinimumHeap() throws MinimumHeapException {
         i1 = 1;
         i2 = 0;
         i3 = 2;
@@ -27,25 +26,25 @@ public class MinimumHeapTestInt{
         i6 = 4;
         i7 = 3;
 
-        heapMin = new MinimunHeap<>(new CompareInteger());
+        heapMin = new MinimumHeap<>(new CompareInteger());
     }
     @Test
     public void testHeapSizeEmpty(){
         assertEquals(0, heapMin.HeapSize());
     }
 
-    @Test(expected = MinimusHeapException.class)
-    public void testAddnullElement() throws MinimusHeapException{
+    @Test(expected = MinimumHeapException.class)
+    public void testAddnullElement() throws MinimumHeapException {
         heapMin.HeapInsert(null);
     }
     @Test
-    public void testSizeOneEl() throws MinimusHeapException{
+    public void testSizeOneEl() throws MinimumHeapException {
         heapMin.HeapInsert(i1);
         assertEquals(1, heapMin.HeapSize());
     }
 
     @Test
-    public void testAddOneEl() throws MinimusHeapException{
+    public void testAddOneEl() throws MinimumHeapException {
         heapMin.HeapInsert(i1);
         Object[] expObjects = {1};
         Object[] aObjects = heapMin.toArray();
@@ -53,7 +52,7 @@ public class MinimumHeapTestInt{
     }
 
     @Test
-    public void testAddTwoEl() throws MinimusHeapException{
+    public void testAddTwoEl() throws MinimumHeapException {
         heapMin.HeapInsert(i1);
         heapMin.HeapInsert(i2);
         Object[] expObjects = {0, 1};
@@ -71,7 +70,7 @@ public class MinimumHeapTestInt{
     }*/
 
     @Test
-    public void testAddSevenEl() throws MinimusHeapException{
+    public void testAddSevenEl() throws MinimumHeapException {
         heapMin.HeapInsert(i1);
         heapMin.HeapInsert(i2);
         heapMin.HeapInsert(i3);
@@ -85,7 +84,7 @@ public class MinimumHeapTestInt{
     }
 
     @Test
-    public void testParentOne() throws MinimusHeapException{
+    public void testParentOne() throws MinimumHeapException {
         heapMin.HeapInsert(i1);
         heapMin.HeapInsert(i2);
         heapMin.HeapInsert(i3);
@@ -98,7 +97,7 @@ public class MinimumHeapTestInt{
     }
 
     @Test
-    public void testLeftSonTwo() throws MinimusHeapException{
+    public void testLeftSonTwo() throws MinimumHeapException {
 
         heapMin.HeapInsert(i1);
         heapMin.HeapInsert(i2);
@@ -112,7 +111,7 @@ public class MinimumHeapTestInt{
     }
 
     @Test
-    public void testOrderedInsertion() throws MinimusHeapException{
+    public void testOrderedInsertion() throws MinimumHeapException {
         heapMin.HeapInsert(i1);
         heapMin.HeapInsert(i2);
         heapMin.HeapInsert(i3);
@@ -127,7 +126,7 @@ public class MinimumHeapTestInt{
 
 
     @Test
-    public void testRightSonTwo() throws MinimusHeapException{
+    public void testRightSonTwo() throws MinimumHeapException {
         heapMin.HeapInsert(i1);
         heapMin.HeapInsert(i2);
         heapMin.HeapInsert(i3);
@@ -140,7 +139,7 @@ public class MinimumHeapTestInt{
     }
 
     @Test
-    public void testAddOneElRemoveRoot() throws MinimusHeapException{
+    public void testAddOneElRemoveRoot() throws MinimumHeapException {
         heapMin.HeapInsert(i1);
         heapMin.HeapRemove();
         Object[] expObjects = {};
@@ -149,7 +148,7 @@ public class MinimumHeapTestInt{
     }
 
     @Test
-    public void testAddSevenElRemoveRoot() throws MinimusHeapException{
+    public void testAddSevenElRemoveRoot() throws MinimumHeapException {
         heapMin.HeapInsert(i1);
         heapMin.HeapInsert(i2);
         heapMin.HeapInsert(i3);
@@ -164,7 +163,7 @@ public class MinimumHeapTestInt{
     }
 
     @Test
-    public void testAddFourElDecreaseSevenToThree() throws MinimusHeapException{
+    public void testAddFourElDecreaseSevenToThree() throws MinimumHeapException {
         heapMin.HeapInsert(i1);
         heapMin.HeapInsert(i2);
         heapMin.HeapInsert(i3);
@@ -175,8 +174,8 @@ public class MinimumHeapTestInt{
         assertArrayEquals(exObjects, aObjects);
     }
 
-    @Test(expected = MinimusHeapException.class)
-    public void testAddFourElDecreaseTwoToNull() throws MinimusHeapException{
+    @Test(expected = MinimumHeapException.class)
+    public void testAddFourElDecreaseTwoToNull() throws MinimumHeapException {
         heapMin.HeapInsert(i1);
         heapMin.HeapInsert(i2);
         heapMin.HeapInsert(i3);
