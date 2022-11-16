@@ -1,4 +1,4 @@
-package grafo;
+package main;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;

@@ -1,4 +1,4 @@
-package grafo;
+package main;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,6 +10,9 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.junit.Before;
 import org.junit.Test;
+
+import grafo.Grafo;
+import grafo.GrafoTipo;
 
 public class GrafoTest {
     private Grafo<Integer, Character> grafo = null;
